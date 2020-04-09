@@ -1,0 +1,376 @@
+<template>
+  <div>
+    <section class="relative overflow-hidden h-screen">
+      <video autoplay muted loop class="min-w-full min-h-full absolute right-0 bottom-0 object-cover">
+        <source src="../assets/180405_FinancialCharts_24.mp4" type="video/mp4">
+      </video>
+      <div class="absolute w-full h-full flex justify-end items-center">
+        <img src="../assets/illustrations/undraw_Artificial_intelligence_oyxx.svg" class="h-40 mr-6 sm:h-72 sm:mr-40 lg:h-80" style="filter: grayscale(0.6);">
+      </div>
+      <div class="relative z-10 glass px-6 md:px-40 border-b-2 border-gray-800 h-full" style="border-radius: unset;">
+        <div class="-mt-12 md:-mt-5 py-40 max-w-3xl mx-auto text-center h-full content-center flex flex-wrap justify-center">
+          <span class="text-center uppercase text-gray-600">Join the smartest investors in the world</span>
+          <h1 class="text-3xl sm:text-5xl text-white mt-4">Start earning Bitcoin by investing in Crespo today</h1>
+          <router-link to="/register" class="inline-block px-6 py-3 bg-red-500 rounded-lg shadow mt-6 text-black">Get Started</router-link>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="mt-10 relative pt-2 pb-10 px-6 sm:px-10 md:px-20 lg:px-40">
+      <h3 class="mt-10 text-2xl text-white font-bold">About Us</h3>
+      <div class="sm:flex items-center">
+        <div class="w-full sm:w-3/5">
+          <p class="text-gray-400 mt-6 leading-loose">
+            Crespo is a cryptocurrency, cryptotechnology and digital assets trading company with the most advanced investment earning credentials, utilizing a proprietary crypto trading algorithm, inter-exchange arbitrage and sophisticated market tools. Our company is able to earn an above-market return on investments and share the same with our investors. Our team is made up of dedicated professionals who trade with dedication and intelligence.
+          </p>
+        </div>
+        <div class="w-full sm:w-2/5 sm:ml-16 hidden sm:block">
+          <div class="min-w-64 min-h-64 text-center items-center justify-center">
+            <img class="h-72" src="../assets/illustrations/undraw_modern_professional_yt9h.svg">
+          </div>
+        </div>
+      </div>
+      <div class="sm:flex items-center mt-20">
+        <div class="w-full sm:w-2/5 sm:mr-16 hidden sm:block">
+          <div class="min-w-64 min-h-64 text-center items-center justify-center">
+            <img class="h-72" src="../assets/illustrations/undraw_finance_0bdk.svg">
+          </div>
+        </div>
+        <div class="w-full sm:w-3/5">
+          <p class="text-gray-400 mt-6 leading-loose">
+            Our aim is to trade for the benefit of the community. Together with Crespo, any person can benefit from the expertise of trading professionals to achieve the ideal results in the area of utilizing options, futures, derivatives and cryptocurrency swap trading. Our emphasis and target is to get the most attractive returns in the market for the benefits of all concerned. Besides, cryptocurrencies have become the most attractive investment assets in the market. Blockchain has been undoubtedly the most crucial technological innovation for the traders in the 21st century. Well-liked cryptocurrencies like Bitcoin, Ethereum and other altcoins are experiencing greater performance and return on investment.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="features" class="mt-10 pt-2 sm:mt-32 px-6 sm:px-10 md:px-20 lg:px-40">
+      <h3 class="mt-10 text-2xl text-white font-bold">Why Choose Us?</h3>
+      <div class="flex flex-wrap">
+        <div class="w-full sm:w-1/2 xl:w-1/3">
+          <div class="mt-16">
+            <div class="flex">
+              <div class="w-16 h-16 rounded-full bg-red-500 flex-shrink-0 flex justify-center items-center">
+                <span class="lnr lnr-rocket text-3xl text-black"></span>
+              </div>
+              <div class="mt-3 ml-6 text-white text-xl">Attractive Plans</div>
+            </div>
+            <p class="mt-4 sm:pr-6 text-gray-400">We believe with superior investment decisions, high-yielding performance is actually achievable, so we make the best of decisions and offer attractive percentages. We guarantee peace of mind, and sincerity of purpose to make your investment work for you. </p>
+          </div>
+        </div>
+        <div class="w-full sm:w-1/2 xl:w-1/3">
+          <div class="mt-16">
+            <div class="flex">
+              <div class="w-16 h-16 rounded-full bg-red-500 flex-shrink-0 flex justify-center items-center">
+                <span class="lnr lnr-briefcase text-3xl text-black"></span>
+              </div>
+              <div class="mt-3 ml-6 text-white text-xl">Professionalism</div>
+            </div>
+            <p class="mt-4 sm:pr-6 text-gray-400">Crespo is run by licensed professional lenders, traders as well as analysts who specialized in the actual stock, commodities, futures, foreign and digital currencies, gold, silver, precious metal and essential oil trading with surplus years of experience.</p>
+          </div>
+        </div>
+        <div class="w-full sm:w-1/2 xl:w-1/3">
+          <div class="mt-16">
+            <div class="flex">
+              <div class="w-16 h-16 rounded-full bg-red-500 flex-shrink-0 flex justify-center items-center">
+                <span class="lnr lnr-sun text-3xl text-black"></span>
+              </div>
+              <div class="mt-3 ml-6 text-white text-xl">Innovation</div>
+            </div>
+            <p class="mt-4 sm:pr-6 text-gray-400">We believe in superior investment decisions. Performance is actually achieved via skillful navigation of the market. Knowledge, technology and adaptability are key ingredients. There is certainly only one method to be at the top of the pack: innovation.</p>
+          </div>
+        </div>
+        <div class="w-full sm:w-1/2 xl:w-1/3">
+          <div class="mt-16">
+            <div class="flex">
+              <div class="w-16 h-16 rounded-full bg-red-500 flex-shrink-0 flex justify-center items-center">
+                <span class="lnr lnr-laptop-phone text-3xl text-black"></span>
+              </div>
+              <div class="mt-3 ml-6 text-white text-xl">Live Statistics</div>
+            </div>
+            <p class="mt-4 sm:pr-6 text-gray-400">Watch your investments grow and your profits accumulate, get a complete insight to what becomes of your investments up until they yield profits, monitor referral bonuses and other stats in real-time from your dashboard.</p>
+          </div>
+        </div>
+        <div class="w-full sm:w-3/3">
+          <div class="mt-16">
+            <div class="flex">
+              <div class="w-16 h-16 rounded-full bg-red-500 flex-shrink-0 flex justify-center items-center">
+                <span class="lnr lnr-users text-3xl text-black"></span>
+              </div>
+              <div class="mt-3 ml-6 text-white text-xl">Referral Bonuses</div>
+            </div>
+            <p class="mt-4 pr-4 text-gray-400 max-w-xl">Earn a lot more on Crespo by referring friends to invest. Get a percentage everytime a friend uses your invite link to register and invest on our platform.</p>
+            <div class="mt-6 flex flex-wrap justify-between">
+              <div class="w-full mt-5 md:w-1/3">
+                <div class="flex items-center p-4 mx-6 border-2 border-red-500 shadow-2xl rounded-lg referral-box">
+                  <div class="w-10 h-10 bg-red-500 rounded-full shadow absolute font-bold text-red-900 -ml-9 flex justify-center items-center">1</div>
+                  <div class="flex ml-3 justify-center items-center">
+                    <div class="mr-3">
+                      <span class="lnr lnr-user text-3xl text-gray-400"></span>
+                    </div>
+                    <p class="text-gray-400">Register, deposit funds and make an investment on Crespo.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full mt-5 md:w-1/3">
+                <div class="flex items-center p-4 mx-6 border-2 border-red-500 shadow-2xl rounded-lg referral-box">
+                  <div class="w-10 h-10 bg-red-500 rounded-full shadow absolute font-bold text-red-900 -ml-9 flex justify-center items-center">2</div>
+                  <div class="flex ml-3 justify-center items-center">
+                    <div class="mr-3">
+                      <span class="lnr lnr-link text-3xl text-gray-400"></span>
+                    </div>
+                    <p class="text-gray-400">Invite friends and family to join Crespo via your referral link.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full mt-5 md:w-1/3">
+                <div class="flex items-center p-4 mx-6 border-2 border-red-500 shadow-2xl rounded-lg referral-box">
+                  <div class="w-10 h-10 bg-red-500 rounded-full shadow absolute font-bold text-red-900 -ml-9 flex justify-center items-center">3</div>
+                  <div class="flex ml-3 justify-center items-center">
+                    <div class="mr-3">
+                      <span class="lnr lnr-enter-down text-3xl text-gray-400"></span>
+                    </div>
+                    <p class="text-gray-400">Earn a percentage of every deposit by users signed up via your link.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="mt-10 sm:mt-32 px-6 sm:px-10 md:px-20 lg:px-40 bg-black text-white py-3">
+      <div class="flex flex-wrap">
+        <div class="w-full sm:w-1/2">
+          <div class="text-center">
+            <h5 class="text-gray-600 uppercase text-sm">BTC / USD</h5>
+            <span class="text-xl">{{ BigNumber(priceState.oneBtcToUsdPrice || 0).toFormat(2) }} USD</span>
+          </div>
+        </div>
+        <div class="w-full sm:w-1/2 mt-10 sm:mt-0">
+          <div class="text-center sm:border-l border-gray-900">
+            <h5 class="text-gray-600 uppercase text-sm">CSO / BTC</h5>
+            <span class="text-xl">{{ BigNumber(priceState.oneCsoToBtcPrice || 0).toFormat(8) }} BTC</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="FAQ" class="mt-10 pt-2 sm:mt-32 px-6 sm:px-10 md:px-20 lg:px-40" :style="{ backgroundImage: 'url(' + require('../assets/illustrations/undraw_questions_75e0.svg') + ')', backgroundPosition: 'right top', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }">
+      <h3 class="mt-10 text-2xl text-white font-bold">FAQ</h3>
+      <p class="text-gray-400 mt-6 leading-loose max-w-xl">
+        Find the answers to some of the questions you might have below. if you don't find any, feel free to chat with us anytime using the live chat feature.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-between max-w-2xl">
+        <div v-for="(f, i) in faq" :key="i" class="mt-4 w-full">
+          <button
+            @click="selectQuestion(i)"
+            class="text-white text-sm shadow-lg bg-gray-800 py-2 px-4 rounded-lg w-full text-left focus:outline-none focus:shadow-2xl focus:bg-red-500"
+            :class="selectedQuestion !== i ? '' : 'bg-red-500'"
+          >
+            {{ f.question }}
+            <span class="fa text-xs float-right py-1" :class="selectedQuestion !== i ? 'fa-plus' : 'fa-minus'"></span>
+          </button>
+          <p v-html="f.answer.replace('<!--MIN_INV-->', minInvestmentAmount)" class="p-4 text-gray-400 text-sm" :class="selectedQuestion !== i ? 'hidden' : ''"></p>
+        </div>
+      </div>
+    </section>
+    <section id="projections" class="mt-10 pt-2 sm:mt-32 px-6 sm:px-10 md:px-20 lg:px-40">
+      <h3 class="mt-10 text-2xl text-white font-bold">Plans &amp; Projections</h3>
+      <p class="text-gray-400 mt-6 leading-loose max-w-xl">
+        Choose an investment plan and utilise our profit calculator to make future profit projections for your investments.
+      </p>
+      <div class="flex flex-wrap mt-10 justify-center">
+        <div v-for="(plan, i) in plans" :key="i" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+          <div class="mx-4 my-2 bg-gray-800 rounded-lg shadow-2xl">
+            <div class="uppercase text-gray-500 tracking-wide text-center text-sm pt-4 pb-2">{{ plan.name }} Plan</div>
+            <div class="flex items-center justify-center pb-2 px-4">
+              <div>
+                <span class="lnr lnr-rocket text-4xl text-green-500"></span>
+              </div>
+              <div class="ml-4">
+                <div class="text-4xl text-white font-medium">{{ plan.percentage }}%</div>
+              </div>
+            </div>
+            <div class="text-gray-600 tracking-wide text-center text-sm pb-2">after {{ formatDays(plan.duration) }}</div>
+            <button v-if="projection.plan === plan.id" class="block w-full py-2 text-white rounded-b-lg bg-green-500 text-center text-sm" disabled>Selected</button>
+            <button v-else @click="projection.plan = plan.id" class="block w-full py-2 bg-gray-700 text-white rounded-b-lg hover:bg-red-500 text-center text-sm">Choose</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap">
+        <div class="w-full md:w-1/2 px-2 my-2">
+          <div class="bg-gray-800 pt-5 pb-6 px-3 rounded-lg mt-5 flex flex-wrap">
+            <div class="w-full">
+              <h4 class="text-center text-sm text-gray-200 uppercase font-bold mb-3">Parameters</h4>
+            </div>
+            <div class="w-full sm:w-1/2 px-4 mt-1">
+              <label for="plan" class="text-white text-sm">Investment plan</label>
+              <select class="block appearance-none mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-gray-500 focus:outline-none focus:border-gray-500 text-sm" id="plan" v-model="projection.plan">
+                <option v-for="(plan, i) in plans" :key="i" :value="plan.id">{{ plan.name }}</option>
+              </select>
+            </div>
+            <div class="w-full sm:w-1/2 px-4 mt-1">
+              <label for="amount" class="text-white text-sm">Enter capital ($)</label>
+              <input v-model="projection.amount" :min="selectedPlan.minimumAmount" id="amount" type="number" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-gray-500 text-sm" placeholder="0.00">
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 px-2 my-2">
+          <div class="bg-green-700 pt-5 pb-6 px-3 rounded-lg mt-5 flex flex-wrap">
+            <div class="w-full">
+              <h4 class="text-center text-sm text-white uppercase font-bold mb-3">Projections</h4>
+            </div>
+            <div class="w-full sm:w-1/2 px-4 mt-1">
+              <label for="duration" class="text-white text-sm">Duration</label>
+              <input :value="`${selectedPlan.duration} days`" id="duration" type="text" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-gray-500 text-sm" placeholder="N/A" readonly>
+            </div>
+            <div class="w-full sm:w-1/2 px-4 mt-1">
+              <label for="plan" class="text-white text-sm">Returns ($)</label>
+              <input v-model="returns" id="amount" type="text" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-sm" :class="minCheckFail ? 'text-red-500' : 'text-gray-500'" placeholder="N/A" readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+import mixins from '../mixins'
+import BigNumber from 'bignumber.js'
+import izitoast from 'izitoast'
+
+export default {
+  name: 'Home',
+  mixins: [mixins],
+  data () {
+    return {
+      BigNumber,
+      projection: {
+        plan: null,
+        amount: null
+      },
+      selectedQuestion: null,
+      plans: [],
+      priceState: {},
+      interval: null,
+      faq: [
+        {
+          question: 'How do I invest?',
+          answer: 'Sign up, activate your account, login, make a deposit and commit to an investment plan.'
+        },
+        {
+          question: 'What assets do I deposit?',
+          answer: 'You deposit the Crespo Token (CSO) equivalent of the US Dollar (USD) amount you wish to invest.'
+        },
+        {
+          question: 'Where can I buy Crespo (CSO) tokens?',
+          answer: 'You can by CSO from the following markets: <ul class="mt-2"><li>&rarr; SouthXchange: <a class="text-green-500" href="https://www.southxchange.com/Market/Book/CSO/BTC">CSO/BTC</a></li><li>&rarr; Crex24: <a class="text-green-500" href="https://crex24.com/exchange/CSO-BTC">CSO/BTC</a></li><li>&rarr; Stex: <a class="text-green-500" href="https://app.stex.com/en/trade/pair/ETH/CSO/1D">CSO/ETH</a></li></ul>'
+        },
+        {
+          question: 'What is the minimum amount I can invest?',
+          answer: `Minimum investment is $<!--MIN_INV-->.`
+        },
+        {
+          question: 'How many simultaneous investments can I make?',
+          answer: 'As much as you want, regardless of choice of plan.'
+        },
+        {
+          question: 'How does the referral program work?',
+          answer: 'You get 15% of every verified deposit by your referrals.'
+        },
+        {
+          question: 'More about Crespo?',
+          answer: 'Check out the following links: <ul class="mt-2"><li>&rarr; <a class="text-green-500" href="https://www.coingecko.com/en/coins/crespo">CoinGecko</a></li><li>&rarr; <a class="text-green-500" href="http://t.me/CrespoCSO">Telegram</a></li><li>&rarr; <a class="text-green-500" href="https://twitter.com/clubcrespo/">Twitter</a></li></ul>'
+        }
+      ]
+    }
+  },
+  computed: {
+    selectedPlan () {
+      return this.plans.find(p => p.id === this.projection.plan) || {}
+    },
+
+    returns () {
+      return this.minCheckFail
+        ? 'Capital too low!'
+        : new BigNumber(this.projection.amount || 0)
+          .times(new BigNumber(this.selectedPlan.percentage || 100).div(100))
+          .plus(this.projection.amount || 0)
+          .toFormat(2)
+    },
+
+    minCheckFail () {
+      return new BigNumber(this.projection.amount)
+        .isLessThan(this.selectedPlan.minimumAmount)
+    },
+
+    minInvestmentAmount () {
+      return this.plans.length
+        ? new BigNumber(this.plans.reduce((min, p) => new BigNumber(p.minimumAmount).isLessThan(min) ? p.minimumAmount : min, this.plans[0].minimumAmount)).toFormat(0)
+        : '...'
+    }
+  },
+  methods:{
+    range : function (start, end) {
+      return Array(end - start + 1).fill().map((_, idx) => start + idx)
+    },
+
+    selectQuestion (index) {
+      if (this.selectedQuestion !== index) {
+        this.selectedQuestion = index
+      } else {
+        this.selectedQuestion = null
+      }
+    },
+
+    async fetchConversion () {
+      const priceState = await axios.get(`/stats/conversion`)
+      this.priceState = priceState.data.data
+    }
+  },
+
+  async mounted () {
+    try {
+      const res = await axios.get('plans')
+
+      if (res) {
+        this.plans.push(...res.data.data)
+        this.projection.plan = this.plans.length ? this.plans[0].id : null
+      }
+    } catch (err) {
+      izitoast.error({
+        title: 'Error',
+        message: 'An unknown error occured.'
+      })
+    }
+  },
+
+  async created () {
+    await this.fetchConversion()
+
+    this.interval = setInterval(async () => {
+      await this.fetchConversion()
+    }, 45000)
+
+    if (this.$route.query.ref) {
+      const referrer = sessionStorage.getItem('referrer')
+
+      if (referrer !== null) {
+        return
+      }
+
+      const res = await axios.get(`/user/${this.$route.query.ref}`)
+
+      if (res) {
+        const referrer = res.data.data.username
+
+        sessionStorage.setItem('referrer', referrer)
+      }
+    }
+  },
+
+  beforeDestroy () {
+    clearInterval(this.interval)
+  }
+}
+</script>

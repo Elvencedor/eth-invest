@@ -1,0 +1,14 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+/* GLASS EFFECT */
+.glass {
+  background: inherit;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(26, 32, 44, 0.69);
+  filter: blur(0);
+}
