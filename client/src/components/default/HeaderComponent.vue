@@ -1,5 +1,5 @@
 <template>
-  <header class="py-4 md:flex justify-between items-center border-b-2 border-gray-800 px-6">
+  <header class="py-4 md:flex justify-between items-center border-b-2 border-gray-800 px-6 bg-gray-900">
     <div class="flex justify-between items-center">
       <router-link to="/"><img src="../../assets/logo.png" class="h-10" /></router-link>
       <button @click="toggle" type="button" class="focus:outline-none focus:text-white text-gray-500 hover:text-white md:hidden">
@@ -19,10 +19,10 @@
     </nav>
     <div class="py-4 md:py-0 justify-between items-center" :class="isOpen ? 'flex': 'hidden md:flex'">
       <div>
-        <router-link to="/register" class="md:mr-4 inline-block text-white border-b-2 border-red-500">Register</router-link>
+        <router-link to="/register" class="md:mr-4 inline-block text-white">Register</router-link>
       </div>
       <div>
-        <router-link to="/login" class="md:ml-4 mt-4 md:mt-0 inline-block  px-3 py-2 rounded-lg bg-red-500 text-black">Login</router-link>
+        <router-link to="/login" class="md:ml-4 md:mt-0 inline-block  px-3 py-2 rounded-lg bg-green-500 text-black">Login</router-link>
       </div>
     </div>
   </header>

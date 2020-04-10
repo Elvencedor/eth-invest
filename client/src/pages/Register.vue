@@ -1,51 +1,51 @@
 <template>
   <section class="flex justify-center items-center flex-col py-20 px-6 sm:px-0">
-    <h1 class="text-3xl text-white">Register</h1>
-    <div class="w-full max-w-sm">
-      <form @submit.prevent="registerRequest()" class="bg-gray-800 p-6 rounded-lg mt-10">
+    <h1 class="text-3xl text-gray-900">Register</h1>
+    <div class="w-full max-w-lg">
+      <form @submit.prevent="registerRequest()" class="border-2 p-6 rounded-lg mt-10">
         <div>
-          <label for="fullname" class="text-white">Full name</label>
-          <input type="text" v-model="$v.form.fullName.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-white" id="fullname">
+          <label for="fullname" class="text-gray-900">Full name</label>
+          <input type="text" v-model="$v.form.fullName.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-600" id="fullname">
           <p class="text-xs text-red-500 italic" v-if="$v.form.fullName.$error && !$v.form.fullName.required">Name is required!</p>
         </div>
         <div class="mt-6">
-          <label for="email" class="text-white">E-mail</label>
-          <input @input="suggestUsername" type="text" v-model.trim="$v.form.email.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-white" id="email">
+          <label for="email" class="text-gray-900">E-mail</label>
+          <input @input="suggestUsername" type="text" v-model.trim="$v.form.email.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-600" id="email">
           <p class="text-xs text-red-500 italic" v-if="$v.form.email.$error && !$v.form.email.required">Email is required!</p>
           <p class="text-xs text-red-500 italic" v-if="$v.form.email.$error && !$v.form.email.email">Invalid email address!</p>
         </div>
         <div class="mt-6">
-          <label for="username" class="text-white">Username</label>
-          <input @input="$v.form.username.$model = String($v.form.username.$model).toLowerCase()" type="text" v-model.trim="$v.form.username.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-white" id="username">
+          <label for="username" class="text-gray-900">Username</label>
+          <input @input="$v.form.username.$model = String($v.form.username.$model).toLowerCase()" type="text" v-model.trim="$v.form.username.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-600" id="username">
           <p class="text-xs text-red-500 italic" v-if="$v.form.username.$error && !$v.form.username.required">Username is required!</p>
           <p class="text-xs text-red-500 italic" v-if="$v.form.username.$error && !$v.form.username.minLength">Username is too short! Min: 3 chars</p>
           <p class="text-xs text-red-500 italic" v-if="$v.form.username.$error && !$v.form.username.maxLength">Username is too long! Max: 32 chars</p>
           <p class="text-xs text-red-500 italic" v-if="$v.form.username.$error && !$v.form.username.usernameValidator">Invalid username!</p>
         </div>
         <div class="mt-6">
-          <label for="password" class="text-white">Password</label>
-          <input type="password" v-model="$v.form.password.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-white" id="password">
+          <label for="password" class="text-gray-900">Password</label>
+          <input type="password" v-model="$v.form.password.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-600" id="password">
           <p class="text-red-500 text-xs italic" v-if="$v.form.password.$error && !$v.form.password.required">Password is required</p>
           <p class="text-red-500 text-xs italic" v-if="$v.form.password.$error && !$v.form.password.minLength">Password must have at least {{$v.form.password.$params.minLength.min}} letters.</p>
         </div>
         <div class="mt-6">
-          <label for="confirm-password" class="text-white">Confirm password</label>
-          <input type="password" v-model="$v.form.confirmPassword.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-white" id="confirm-password">
+          <label for="confirm-password" class="text-gray-900">Confirm password</label>
+          <input type="password" v-model="$v.form.confirmPassword.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-600" id="confirm-password">
           <p class="text-red-500 text-xs italic" v-if="$v.form.confirmPassword.$error && !$v.form.confirmPassword.sameAsPassword">Passwords must be identical.</p>
         </div>
         <div v-if="form.referrer" class="mt-6">
-          <label for="referrer" class="text-white">Referrer</label>
-          <input type="text" readonly v-model="$v.form.referrer.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-white" id="referrer">
+          <label for="referrer" class="text-gray-900">Referrer</label>
+          <input type="text" readonly v-model="$v.form.referrer.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-600" id="referrer">
           <p class="text-red-500 text-xs italic" v-if="$v.form.referrer.$error && !$v.form.referrer.required">Referrer is required</p>
         </div>
         <div class="mt-6 flex items-center">
           <input type="checkbox" v-model="form.tac" class="rounded-lg py-3 px-6 bg-gray-900">
-          <p class="text-white ml-4">I agree with <router-link to="/terms" class="text-red-500">Terms and Conditions</router-link></p>
+          <p class="text-gray-900 ml-4">I agree with <router-link to="/terms" class="text-green-500">Terms and Conditions</router-link></p>
         </div>
         <div class="mt-6">
           <button
             type="submit"
-            class="mt-3 w-full shadow rounded-lg py-3 px-6 bg-red-500 hover:bg-red-400 disabled:opacity-50"
+            class="mt-3 w-full shadow rounded-lg py-3 px-6 bg-green-500 text-gray-900 hover:bg-green-400 disabled:opacity-50"
             :disabled="loading"
           >
             Register 
@@ -55,7 +55,7 @@
       <div class="mt-20">
         <router-link
           to="/login"
-          class="block text-center text-red-500 shadow rounded-lg py-3 px-6 border-2 border-red-500 hover:bg-red-500 hover:text-black"
+          class="block text-center text-green-500 shadow rounded-lg py-3 px-6 border-2 border-green-500 hover:bg-green-500 hover:text-gray-900"
         >
           I already have an account
         </router-link>
