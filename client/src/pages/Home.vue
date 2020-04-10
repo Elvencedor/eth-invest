@@ -25,7 +25,7 @@
         </div>
         <div class="w-full sm:w-3/5">
           <p class="text-gray-600 mt-6 leading-loose">
-            Our aim is to trade for the benefit of the community. Together with Crespo, any person can benefit from the expertise of trading professionals to achieve the ideal results in the area of utilizing options, futures, derivatives and cryptocurrency swap trading. Our emphasis and target is to get the most attractive returns in the market for the benefits of all concerned. Besides, cryptocurrencies have become the most attractive investment assets in the market. Blockchain has been undoubtedly the most crucial technological innovation for the traders in the 21st century. Well-liked cryptocurrencies like Bitcoin, Ethereum and other altcoins are experiencing greater performance and return on investment.
+            Our aim is to trade for the benefit of the community. Together with ETH-Investment, any person can benefit from the expertise of trading professionals to achieve the ideal results in the area of utilizing options, futures, derivatives and cryptocurrency swap trading. Our emphasis and target is to get the most attractive returns in the market for the benefits of all concerned. Besides, cryptocurrencies have become the most attractive investment assets in the market. Blockchain has been undoubtedly the most crucial technological innovation for the traders in the 21st century. Well-liked cryptocurrencies like Bitcoin, Ethereum and other altcoins are experiencing greater performance and return on investment.
           </p>
         </div>
       </div>
@@ -52,7 +52,7 @@
               </div>
               <div class="mt-3 ml-6 text-gray-900 text-xl">Professionalism</div>
             </div>
-            <p class="mt-4 sm:pr-6 text-gray-600">Crespo is run by licensed professional lenders, traders as well as analysts who specialized in the actual stock, commodities, futures, foreign and digital currencies, gold, silver, precious metal and essential oil trading with surplus years of experience.</p>
+            <p class="mt-4 sm:pr-6 text-gray-600">ETH-Investment is run by licensed professional lenders, traders as well as analysts who specialized in the actual stock, commodities, futures, foreign and digital currencies, gold, silver, precious metal and essential oil trading with surplus years of experience.</p>
           </div>
         </div>
         <div class="w-full sm:w-1/2 xl:w-1/3">
@@ -85,7 +85,7 @@
               </div>
               <div class="mt-3 ml-6 text-gray-900 text-xl">Referral Bonuses</div>
             </div>
-            <p class="mt-4 pr-4 text-gray-600 max-w-xl">Earn a lot more on Crespo by referring friends to invest. Get a percentage everytime a friend uses your invite link to register and invest on our platform.</p>
+            <p class="mt-4 pr-4 text-gray-600 max-w-xl">Earn a lot more on ETH-Investment by referring friends to invest. Get a percentage everytime a friend uses your invite link to register and invest on our platform.</p>
             <div class="mt-6 flex flex-wrap justify-between">
               <div class="w-full mt-5 md:w-1/3">
                 <div class="flex items-center p-4 mx-6 border-2 border-green-500 shadow-2xl rounded-lg referral-box">
@@ -94,7 +94,7 @@
                     <div class="mr-3">
                       <span class="lnr lnr-user text-3xl text-gray-600"></span>
                     </div>
-                    <p class="text-gray-600">Register, deposit funds and make an investment on Crespo.</p>
+                    <p class="text-gray-600">Register, deposit funds and make an investment on ETH-Investment.</p>
                   </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@
                     <div class="mr-3">
                       <span class="lnr lnr-link text-3xl text-gray-600"></span>
                     </div>
-                    <p class="text-gray-600">Invite friends and family to join Crespo via your referral link.</p>
+                    <p class="text-gray-600">Invite friends and family to join ETH-Investment via your referral link.</p>
                   </div>
                 </div>
               </div>
@@ -248,10 +248,10 @@ export default {
         },
         {
           question: 'What assets do I deposit?',
-          answer: 'You deposit the Crespo Token (CSO) equivalent of the US Dollar (USD) amount you wish to invest.'
+          answer: 'You deposit the ETH-Investment Token (CSO) equivalent of the US Dollar (USD) amount you wish to invest.'
         },
         {
-          question: 'Where can I buy Crespo (CSO) tokens?',
+          question: 'Where can I buy ETH-Investment (CSO) tokens?',
           answer: 'You can by CSO from the following markets: <ul class="mt-2"><li>&rarr; SouthXchange: <a class="text-green-500" href="https://www.southxchange.com/Market/Book/CSO/BTC">CSO/BTC</a></li><li>&rarr; Crex24: <a class="text-green-500" href="https://crex24.com/exchange/CSO-BTC">CSO/BTC</a></li><li>&rarr; Stex: <a class="text-green-500" href="https://app.stex.com/en/trade/pair/ETH/CSO/1D">CSO/ETH</a></li></ul>'
         },
         {
@@ -267,7 +267,7 @@ export default {
           answer: 'You get 15% of every verified deposit by your referrals.'
         },
         {
-          question: 'More about Crespo?',
+          question: 'More about ETH-Investment?',
           answer: 'Check out the following links: <ul class="mt-2"><li>&rarr; <a class="text-green-500" href="https://www.coingecko.com/en/coins/crespo">CoinGecko</a></li><li>&rarr; <a class="text-green-500" href="http://t.me/CrespoCSO">Telegram</a></li><li>&rarr; <a class="text-green-500" href="https://twitter.com/clubcrespo/">Twitter</a></li></ul>'
         }
       ]
