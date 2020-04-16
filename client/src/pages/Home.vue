@@ -9,9 +9,9 @@
       </div> -->
       <div class="relative z-10 px-6 md:px-40 h-full" style="border-radius: unset;">
         <div class="-mt-12 md:-mt-5 py-40 max-w-3xl mx-auto text-center h-full content-center flex flex-wrap justify-center">
-          <span class="text-center uppercase text-gray-600">Join the smartest investors in the world</span>
-          <h1 class="text-3xl sm:text-5xl text-gray-900 mt-4">Start <span class="text-green-500">earning Money</span> by investing with us today</h1>
-          <router-link to="/register" class="inline-block px-6 py-3 bg-green-500 rounded-lg shadow mt-6 text-black font-semibold text-sm text-gray-900">Start investment</router-link>
+          <h1 class="text-center uppercase text-gray-900 text-3xl sm:text-5xl">Instant access to investing anytime</h1>
+          <h1 class="text-gray-700 mt-4">Investing with Eth Investment has been made easy, with less stree you have everything you need in one packaged platform.</h1>
+          <router-link to="/register" class="inline-block px-6 py-3 bg-green-500 rounded-lg shadow mt-6 text-black font-semibold text-sm text-gray-900">Get Started</router-link>
         </div>
       </div>
     </section>
@@ -25,23 +25,23 @@
         </div>
         <div class="w-full sm:w-3/5">
           <p class="text-gray-600 mt-6 leading-loose">
-            Our aim is to trade for the benefit of the community. Together with ETH-Investment, any person can benefit from the expertise of trading professionals to achieve the ideal results in the area of utilizing options, futures, derivatives and cryptocurrency swap trading. Our emphasis and target is to get the most attractive returns in the market for the benefits of all concerned. Besides, cryptocurrencies have become the most attractive investment assets in the market. Blockchain has been undoubtedly the most crucial technological innovation for the traders in the 21st century. Well-liked cryptocurrencies like Bitcoin, Ethereum and other altcoins are experiencing greater performance and return on investment.
+            ETH as a professional trading platform is targeted to people of different class and culture. Eth Investment enhances the rich and average income earners to benefit from our professional tools through the utilization of our options, features existing to manage your wide interest of cryptocurrency trading. With comparative analysis our goal is to target the most attractive investment asserts in the general market which cannot be leveraged anywhere. The existence of Block chain technology has been a solution to the bottleneck economy of our time, which is why the likes of Bitcoin and Ethereum are striving with blockchain innovative technology. It is with interest we have chosen to majorly trade with Ethereum on this platform.
           </p>
         </div>
       </div>
     </section>
     <section id="features" class="py-24 px-6 sm:px-10 md:px-20 lg:px-40 bg-gray-100">
-      <h3 class="text-2xl text-center font-bold">Why Choose Us?</h3>
+      <h3 class="text-2xl text-center font-bold">Why Chose Us?</h3>
       <div class="flex flex-wrap">
         <div class="w-full sm:w-1/2 xl:w-1/3">
           <div class="mt-16">
             <div class="flex">
               <div class="w-16 h-16 rounded-full bg-green-500 flex-shrink-0 flex justify-center items-center">
-                <span class="lnr lnr-rocket text-3xl text-black"></span>
+                <span class="lnr lnr-sun text-3xl text-black"></span>
               </div>
-              <div class="mt-3 ml-6 text-gray-900 text-xl">Attractive Plans</div>
+              <div class="mt-3 ml-6 text-gray-900 text-xl">Innovation</div>
             </div>
-            <p class="mt-4 sm:pr-6 text-gray-600">We believe with superior investment decisions, high-yielding performance is actually achievable, so we make the best of decisions and offer attractive percentages. We guarantee peace of mind, and sincerity of purpose to make your investment work for you. </p>
+            <p class="mt-4 sm:pr-6 text-gray-600">Eth Investment believe in superior investment decisions. Performance is actually achieved via skillful navigation of the market. Knowledge, technology and adaptability are key inggreenients. There is certainly only one method to be at the top of the pack: innovation.</p>
           </div>
         </div>
         <div class="w-full sm:w-1/2 xl:w-1/3">
@@ -52,18 +52,18 @@
               </div>
               <div class="mt-3 ml-6 text-gray-900 text-xl">Professionalism</div>
             </div>
-            <p class="mt-4 sm:pr-6 text-gray-600">ETH-Investment is run by licensed professional lenders, traders as well as analysts who specialized in the actual stock, commodities, futures, foreign and digital currencies, gold, silver, precious metal and essential oil trading with surplus years of experience.</p>
+            <p class="mt-4 sm:pr-6 text-gray-600">Eth Investment is run by licensed professional lenders, traders as well as analysts who specialized in the actual stock, commodities, futures, foreign and digital currencies, gold, silver, precious metal and essential oil trading with surplus years of experience.</p>
           </div>
         </div>
         <div class="w-full sm:w-1/2 xl:w-1/3">
           <div class="mt-16">
             <div class="flex">
               <div class="w-16 h-16 rounded-full bg-green-500 flex-shrink-0 flex justify-center items-center">
-                <span class="lnr lnr-sun text-3xl text-black"></span>
+                <span class="lnr lnr-rocket text-3xl text-black"></span>
               </div>
-              <div class="mt-3 ml-6 text-gray-900 text-xl">Innovation</div>
+              <div class="mt-3 ml-6 text-gray-900 text-xl">Attractive Plans</div>
             </div>
-            <p class="mt-4 sm:pr-6 text-gray-600">We believe in superior investment decisions. Performance is actually achieved via skillful navigation of the market. Knowledge, technology and adaptability are key inggreenients. There is certainly only one method to be at the top of the pack: innovation.</p>
+            <p class="mt-4 sm:pr-6 text-gray-600">Eth Investment believe with superior investment decisions, high-yielding performance is actually achievable, so we make the best of decisions and offer attractive percentages. We guarantee peace of mind, and sincerity of purpose to make your investment work for you. </p>
           </div>
         </div>
         <div class="w-full sm:w-1/2 xl:w-1/3">
@@ -85,7 +85,7 @@
               </div>
               <div class="mt-3 ml-6 text-gray-900 text-xl">Referral Bonuses</div>
             </div>
-            <p class="mt-4 pr-4 text-gray-600 max-w-xl">Earn a lot more on ETH-Investment by referring friends to invest. Get a percentage everytime a friend uses your invite link to register and invest on our platform.</p>
+            <p class="mt-4 pr-4 text-gray-600 max-w-xl">Earn a lot more on Eth Investment by referring friends to invest. Get a percentage of 2% everytime a friend uses your invite link to register and invest on our platform.</p>
             <div class="mt-6 flex flex-wrap justify-between">
               <div class="w-full mt-5 md:w-1/3">
                 <div class="flex items-center p-4 mx-6 border-2 border-green-500 shadow-2xl rounded-lg referral-box">
@@ -94,7 +94,7 @@
                     <div class="mr-3">
                       <span class="lnr lnr-user text-3xl text-gray-600"></span>
                     </div>
-                    <p class="text-gray-600">Register, deposit funds and make an investment on ETH-Investment.</p>
+                    <p class="text-gray-600">Register, deposit funds and make an investment with Ethereum.</p>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@
         </div>
         <div class="w-full sm:w-1/2 mt-10 sm:mt-0">
           <div class="text-center sm:border-l border-gray-900">
-            <h5 class="text-gray-600 uppercase text-sm">CSO / BTC</h5>
+            <h5 class="text-gray-600 uppercase text-sm">ETH / BTC</h5>
             <span class="text-xl">{{ BigNumber(priceState.oneCsoToBtcPrice || 0).toFormat(8) }} BTC</span>
           </div>
         </div>
@@ -161,9 +161,9 @@
       </div>
     </section>
     <section id="projections" class="py-24 px-6 sm:px-10 md:px-20 lg:px-40">
-      <h3 class="text-2xl text-center font-bold">Plans &amp; Projections</h3>
+      <h3 class="text-2xl text-center font-bold">Plans &amp; Forecasts</h3>
       <p class="text-gray-600 mt-6 leading-loose max-w-xl">
-        Choose an investment plan and utilise our profit calculator to make future profit projections for your investments.
+        Decide the investment plan of your choice and utilize our calculator to make future forecast
       </p>
       <div class="flex flex-wrap mt-10 justify-center">
         <div v-for="(plan, i) in plans" :key="i" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
@@ -187,7 +187,7 @@
         <div class="w-full md:w-1/2 px-2 my-2">
           <div class="bg-gray-800 pt-5 pb-6 px-3 rounded-lg mt-5 flex flex-wrap">
             <div class="w-full">
-              <h4 class="text-center text-sm text-gray-200 uppercase font-bold mb-3">Parameters</h4>
+              <h4 class="text-center text-sm text-gray-200 uppercase font-bold mb-3">Limitations</h4>
             </div>
             <div class="w-full sm:w-1/2 px-4 mt-1">
               <label for="plan" class="text-white text-sm">Investment plan</label>
@@ -204,7 +204,7 @@
         <div class="w-full md:w-1/2 px-2 my-2">
           <div class="bg-green-700 pt-5 pb-6 px-3 rounded-lg mt-5 flex flex-wrap">
             <div class="w-full">
-              <h4 class="text-center text-sm text-white uppercase font-bold mb-3">Projections</h4>
+              <h4 class="text-center text-sm text-white uppercase font-bold mb-3">Forecasts</h4>
             </div>
             <div class="w-full sm:w-1/2 px-4 mt-1">
               <label for="duration" class="text-white text-sm">Duration</label>
@@ -248,11 +248,11 @@ export default {
         },
         {
           question: 'What assets do I deposit?',
-          answer: 'You deposit the ETH-Investment Token (CSO) equivalent of the US Dollar (USD) amount you wish to invest.'
+          answer: 'You deposit the Ethereum (ETH) equivalent of the US Dollar (USD) amount you wish to invest.'
         },
         {
-          question: 'Where can I buy ETH-Investment (CSO) tokens?',
-          answer: 'You can by CSO from the following markets: <ul class="mt-2"><li>&rarr; SouthXchange: <a class="text-green-500" href="https://www.southxchange.com/Market/Book/CSO/BTC">CSO/BTC</a></li><li>&rarr; Crex24: <a class="text-green-500" href="https://crex24.com/exchange/CSO-BTC">CSO/BTC</a></li><li>&rarr; Stex: <a class="text-green-500" href="https://app.stex.com/en/trade/pair/ETH/CSO/1D">CSO/ETH</a></li></ul>'
+          question: 'Where can I buy Ethereum (ETH) coin?',
+          answer: 'You can buy Ethereum from the following markets: <ul class="mt-2"><li>&rarr; SouthXchange: <a class="text-green-500" href="https://www.southxchange.com/Market/Book/ETH/BTC">ETH/BTC</a></li><li>&rarr; Crex24: <a class="text-green-500" href="https://crex24.com/exchange/ETH-BTC">ETH/BTC</a></li></ul>'
         },
         {
           question: 'What is the minimum amount I can invest?',
@@ -264,7 +264,7 @@ export default {
         },
         {
           question: 'How does the referral program work?',
-          answer: 'You get 15% of every verified deposit by your referrals.'
+          answer: 'You get 2% of every verified deposit by your referrals.'
         },
         {
           question: 'More about ETH-Investment?',

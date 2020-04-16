@@ -2,7 +2,7 @@
   <footer class="border-t-2 border-gray-200 text-gray-900 py-6 mt-20 px-6 sm:px-40">
     <div class="flex flex-wrap justify-between items-center">
       <div>
-        {{ new Date().getFullYear() }} &copy; <router-link to="/">Crespo</router-link>. All rights reserved.
+        {{ new Date().getFullYear() }} &copy; <router-link to="/">Eth</router-link>. All rights reserved.
       </div>
       <div>
         <ul class="flex">
