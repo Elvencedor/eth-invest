@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"rm -rf node_modules package-lock.json && npm install\" \"cd client && npm install && npm run build && node server.js\""
+    "heroku-postbuild": "cd client && npm install --only=dev --no-shrinkwrap",
+    "start": "concurrently \"rm -rf node_modules package-lock.json && npm install\" \"cd client && npm run build && node server.js\""
   },
   "repository": {
     "type": "git",
