@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "cd client && npm install --only=dev --no-shrinkwrap",
+    "heroku-postbuild": "cd client && npm install",
     "start": "concurrently \"cd client && node server.js\""
   },
   "repository": {
