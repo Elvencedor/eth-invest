@@ -17,6 +17,9 @@
     "url": "https://github.com/Elvencedor/eth-invest/issues"
   },
   "homepage": "https://github.com/Elvencedor/eth-invest#readme",
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  },
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
