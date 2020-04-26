@@ -8,8 +8,8 @@ import v from 'validator'
 import * as depositService from '../../../services/deposit'
 
 export async function index (req: Request, res: Response) {
-  const limit = parseInt(req.query.limit || 10)
-  const page = parseInt(req.query.page || 1)
+  const limit = Number(req.query.limit || 10)
+  const page = Number(req.query.page || 1)
   const searchQuery = req.query.search
 
   const depositRepo = getRepository(Deposit)

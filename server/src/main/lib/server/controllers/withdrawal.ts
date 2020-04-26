@@ -13,8 +13,8 @@ export async function fetchWithdrawals (req: Request, res: Response) {
     search: req.query.search
   },
   {
-    limit: parseInt(req.query.limit || 10),
-    page: parseInt(req.query.page || 1)
+    limit: Number(req.query.limit || 10),
+    page: Number(req.query.page || 1)
   })
     .then(async result => {
       respond(res, 200, null, result.results, { 

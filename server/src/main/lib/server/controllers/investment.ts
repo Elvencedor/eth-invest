@@ -13,8 +13,8 @@ export async function fetchSubscriptions (req: Request, res: Response) {
     search: req.query.search
   },
   {
-    limit: parseInt(req.query.limit || 10),
-    page: parseInt(req.query.page || 1)
+    limit: Number(req.query.limit || 10),
+    page: Number(req.query.page || 1)
   })
     .then(result => {
       const newInvestments: Object[] = []

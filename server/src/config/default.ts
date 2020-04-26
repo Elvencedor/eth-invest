@@ -18,7 +18,7 @@ export default {
     host: '127.0.0.1',
     port: 5432,
     username: 'postgres',
-    password: 'Goodluck1903',
+    password: 'postgres',
     database: 'crespodb',
     schema: 'public',
     charset: 'UTF8MB4_UNICODE_CI',
