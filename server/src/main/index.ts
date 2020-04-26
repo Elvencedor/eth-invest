@@ -14,7 +14,7 @@ const isMasterProcess = require('is-master-process')
 
 createConnection({
   ...config.get('database'),
-  synchronize: false,
+  synchronize: true,
   entities: [`${__dirname}/db/entity/*`]
 }).then(async() => {
   console.info(`Established database connection...`)
@@ -23,7 +23,7 @@ createConnection({
     const seedConn = await createConnection({
       ...config.get('database'),
       name: 'seed',
-      synchronize: false,
+      synchronize: true,
       entities: [`${__dirname}/db/entity/*`],
       migrations: [`${__dirname}/db/seeds/*`]
     })
