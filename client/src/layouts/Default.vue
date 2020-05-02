@@ -1,5 +1,5 @@
 <template>
-  <section class="mx-auto">
+  <section class="mx-auto relative">
     <HeaderComponent />
     <main class="min-h-screen">
       <router-view></router-view>

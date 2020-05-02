@@ -1,5 +1,5 @@
 <template>
-  <header class="py-4 md:flex justify-between items-center border-b-2 border-gray-800 px-6 bg-gray-900">
+  <header class="py-4 top-0 sticky w-full z-50 md:flex justify-between items-center border-b-2 border-gray-800 px-6" style="background-color: #1a202cbd;">
     <div class="flex justify-between items-center">
       <router-link to="/"><img src="../../assets/logo.png" class="h-10" /></router-link>
       <button @click="toggle" type="button" class="focus:outline-none focus:text-white text-gray-500 hover:text-white md:hidden">

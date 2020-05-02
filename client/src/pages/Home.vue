@@ -10,8 +10,8 @@
         <img src="../assets/illustrations/undraw_Artificial_intelligence_oyxx.svg" class="h-40 mr-6 sm:h-72 sm:mr-40 lg:h-80" style="filter: grayscale(0.6);">
       </div> -->
 
-      <agile :initial-slide="3">
-        <div class="slide relative">
+      <agile :initial-slide="0" :autoplay="true" :autoplay-speed="4000">
+        <div class="slide relative min-h-screen">
           <img
             class="object-cover h-full w-full"
             src="@/assets/slideshow/what_is_eth.png"
@@ -33,7 +33,7 @@
             </div>
           </div>
         </div>
-        <div class="slide relative">
+        <div class="slide relative min-h-screen">
           <img
             class="object-cover h-full w-full"
             src="@/assets/slideshow/KnGaBxldXnnJ413hyR41c0ZyhNIZDvQ4N3PoVXhsGqA.jpg"
@@ -53,13 +53,13 @@
             </div>
           </div>
         </div>
-        <div class="slide relative">
+        <div class="slide relative min-h-screen">
           <img
             class="object-cover h-full w-full"
             src="@/assets/slideshow/how-to-make-money-with-ethereum-in-nigeria.jpeg"
           />
           <div class="absolute top-0 w-full h-full flex justify-center items-center" style="background-color: #1a202c99;">
-            <div class="max-w-3xl text-center">
+            <div class="max-w-3xl text-center px-4">
               <h1 class="text-3xl text-white font-bold uppercase sm:text-5xl">
                  AT A HISTORIC MARKET FALL
               </h1>
@@ -75,13 +75,13 @@
             </div>
           </div>
         </div>
-        <div class="slide relative">
+        <div class="slide relative min-h-screen">
           <img
             class="object-cover h-full w-full"
             src="@/assets/slideshow/ethereum-is-about-to-get-a-big-upgrade-heres-what-you-need-t_cjyp.jpg"
           />
           <div class="absolute top-0 w-full h-full flex justify-center items-center" style="background-color: #1a202c99;">
-            <div class="max-w-3xl text-center px-6">
+            <div class="max-w-3xl text-center px-4">
               <h1 class="text-3xl text-white font-bold uppercase sm:text-5xl">
                 FREE OF TRANSACTION CHARGES
               </h1>
@@ -97,7 +97,7 @@
             </div>
           </div>
         </div>
-        <div class="slide relative">
+        <div class="slide relative min-h-screen">
           <img
             class="object-cover h-full w-full"
             src="@/assets/slideshow/Ethereum-hashrate.jpg"
@@ -127,7 +127,7 @@
         ></template>
       </agile>
     </section>
-    <section id="about" class="relative py-24 px-6 sm:px-10 md:px-20 lg:px-40">
+    <section id="about" class="relative min-h-screen flex flex-col justify-center items-center py-24 px-6 sm:px-10 md:px-20 lg:px-40">
       <h3 class="text-2xl text-center font-bold">About Us</h3>
       <div class="sm:flex items-center justify-center mt-16">
         <div class="w-full max-w-3xl">
@@ -325,23 +325,15 @@
     <section
       id="FAQ"
       class="py-24 px-6 sm:px-10 md:px-20 lg:px-40"
-      :style="{
-        backgroundImage:
-          'url(' +
-          require('../assets/illustrations/undraw_questions_75e0.svg') +
-          ')',
-        backgroundPosition: 'right top',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-      }"
     >
+    <div class="max-w-3xl mx-auto">
       <h3 class="text-2xl text-center font-bold">FAQ</h3>
-      <p class="text-gray-600 mt-6 leading-loose max-w-xl">
+      <p class="text-gray-600 mt-6 leading-loose">
         Find the answers to some of the questions you might have below. if you
         don't find any, feel free to chat with us anytime using the live chat
         feature.
       </p>
-      <div class="mt-6 flex flex-wrap justify-between max-w-2xl">
+      <div class="mt-6 flex flex-wrap justify-between">
         <div v-for="(f, i) in faq" :key="i" class="mt-4 w-full">
           <button
             @click="selectQuestion(i)"
@@ -361,6 +353,7 @@
           ></p>
         </div>
       </div>
+    </div>
     </section>
     <section id="projections" class="py-24 px-6 sm:px-10 md:px-20 lg:px-40">
       <h3 class="text-2xl text-center font-bold">Plans &amp; Forecasts</h3>
@@ -599,12 +592,7 @@ export default {
       } else {
         this.selectedQuestion = null;
       }
-    },
-
-    async fetchConversion() {
-      const priceState = await axios.get(`/stats/conversion`);
-      this.priceState = priceState.data.data;
-    },
+    }
   },
 
   async mounted() {
@@ -624,12 +612,6 @@ export default {
   },
 
   async created() {
-    await this.fetchConversion();
-
-    this.interval = setInterval(async () => {
-      await this.fetchConversion();
-    }, 45000);
-
     if (this.$route.query.ref) {
       const referrer = sessionStorage.getItem("referrer");
 
