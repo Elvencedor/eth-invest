@@ -59,10 +59,8 @@ export default {
                 paystackService.transaction.verify({
                     transReference: this.$session.get('reference-key')
                 })
-                .then(async verify => {
+                .then(verify => {
                     if(verify){
-                        axios.post('/paystackSave', this.form)
-                        this.console.log(verify)
                         this.$router.replace({name: 'deposits', query: {status: 'txSaved'}})
                         izitoast.success({
                             title: 'Success',
@@ -95,6 +93,10 @@ export default {
                 }
             }
         }
+    },
+
+    async created() {
+        axios.post('/paystackSave', this.form)
     }
 }
 </script>

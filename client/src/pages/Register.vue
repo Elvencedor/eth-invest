@@ -126,7 +126,8 @@ export default {
   computed: {
     ...mapGetters({
       loggedIn: 'auth/loggedIn'
-    })
+    }),
+    console: () => console
   },
 
   methods: {

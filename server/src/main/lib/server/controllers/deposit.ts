@@ -101,8 +101,7 @@ export async function createDeposit (req: Request, res: Response) {
       respond(res, error.getStatus(), [error])
     }
   } catch (err) {
-    // respond(res, err.getStatus(), [err])
-    console.log(err)
+    respond(res, err.getStatus(), [err])
   }
 }
 
@@ -110,8 +109,7 @@ export async function updateDeposit (req: Request, res: Response) {
   if (v.isEmpty(req.body.txid || '')) {
     return respond(res, 400, [new AppError({ message: 'Transaction hash can not be empty!', status: 400 })])
   }
-  // console.log({txid: req.body.txid, message: 'Testing this module'})
-  // return respond(res, 200, null, [])
+  
   depositService.updateDeposit(req.params.id, {
     txid: req.body.txid
   })
@@ -130,7 +128,7 @@ export async function updateDeposit (req: Request, res: Response) {
             message: 'Server error.',
             status: 500
           })
-          // console.log(err)
+
           respond(res, error.getStatus(), [error])
         })
       } else {
@@ -138,13 +136,13 @@ export async function updateDeposit (req: Request, res: Response) {
           message: 'SOmething just happened right now',
           status: 500
         })
-        // console.log(err)
+
         respond(res, error.getStatus(), [error])
       }
       
     })
     .catch(err => {
-      // console.log(err)
+
       respond(res, err.getStatus(), [err])
     })
 }

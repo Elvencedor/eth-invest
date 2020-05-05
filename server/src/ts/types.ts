@@ -6,11 +6,10 @@ export interface RegisterPayload {
   referrer?: string
 }
 
-export interface donorPayload {
-  email: string
-  amount: Number
-  reference?: string
+export interface paystackPayload {
   userId: string
+  amount: string
+  reference?: string
 }
 
 export interface LoginPayload {

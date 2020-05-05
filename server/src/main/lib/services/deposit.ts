@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import { getRepository, getConnection, Like } from 'typeorm'
 import { Deposit, DepositStatus } from '../../db/entity/Deposit';
 import { AppError } from '../errors/AppError'
-import { NewDepositPayload, NewUpdateDepositPayload, DepositUpdatePayload, ERC20Contract} from '../../../ts/types'
+import { NewDepositPayload, DepositUpdatePayload, ERC20Contract} from '../../../ts/types'
 import * as etherscan from './etherscan'
 import { User } from '../../db/entity/User'
 import { Referral } from '../../db/entity/Referral'
@@ -57,7 +57,7 @@ export async function fetchDeposits (query:any, options: PaginationOptionsInterf
       'deposit.updatedAt'
     ])
     .where('deposit.userId = :id', { id: query.userId })
-    .andWhere('deposit.id like :idStr', { idStr: '%' + searchQuery + '%' })
+    // .orWhere('deposit.id like :idStr', { idStr: '%' + searchQuery + '%' })
     .skip(options.limit * (options.page - 1))
     .take(options.limit)
     .orderBy('deposit.createdAt', 'DESC')
@@ -147,16 +147,6 @@ export async function fetchDepositById(id: string): Promise<any>{
         status: 403
       }))
     }
-  })
-}
-
-export async function test (id: string): Promise<any>{
-  return new Promise((resolve,reject) => {
-    etherscan.getTransactionReceipt(id)
-    .then(receipt => {
-      console.log(receipt)
-      resolve(receipt)
-    })
   })
 }
 
