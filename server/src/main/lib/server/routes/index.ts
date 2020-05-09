@@ -23,55 +23,55 @@ export const APP_ROUTES = [
   // PUBLIC ROUTES
 
   {
-    path: "/session",
-    method: "post",
+    path: '/session',
+    method: 'post',
     action: authCtrl.createSession
   },
   {
-    path: "/session",
-    method: "delete",
+    path: '/session',
+    method: 'delete',
     action: authCtrl.deleteSession
   },
   {
-    path: "/users",
-    method: "post",
+    path: '/users',
+    method: 'post',
     action: userCtrl.registerUser
   },
   {
-    path: "/user/:username",
-    method: "get",
+    path: '/user/:username',
+    method: 'get',
     action: userCtrl.fetchUser
   },
   // Account
   {
-    path: "/account/activate",
-    method: "post",
-    action: verificationCtrl.activateUser,
+    path: '/account/activate',
+    method: 'post',
+    action: verificationCtrl.activateUser
   },
   // Password
   {
-    path: "/password/forgot",
-    method: "post",
-    action: passwordCtrl.forgotPassword,
+    path: '/password/forgot',
+    method: 'post',
+    action: passwordCtrl.forgotPassword
   },
   {
-    path: "/password/reset",
-    method: "post",
-    action: passwordCtrl.resetPassword,
+    path: '/password/reset',
+    method: 'post',
+    action: passwordCtrl.resetPassword
   },
   {
-    path: "/confirmation/send",
-    method: "post",
-    action: userCtrl.resendConfirmationMail,
+    path: '/confirmation/send',
+    method: 'post',
+    action: userCtrl.resendConfirmationMail
   },
   {
-    path: "/stats/conversion",
-    method: "get",
+    path: '/stats/conversion',
+    method: 'get',
     action: statCtrl.fetchConversion
   },
   {
-    path: "/support",
-    method: "post",
+    path: '/support',
+    method: 'post',
     action: supportCtrl.action
   },
 
@@ -79,241 +79,242 @@ export const APP_ROUTES = [
 
   // users
   {
-    path: "/users",
-    method: "put",
+    path: '/users',
+    method: 'put',
     action: userCtrl.updateUser,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/users/updatePassword",
-    method: "put",
+    path: '/users/updatePassword',
+    method: 'put',
     action: userCtrl.updatePassword,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/users/updateEmail",
-    method: "put",
+    path: '/users/updateEmail',
+    method: 'put',
     action: userCtrl.updateEmail,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/users/self",
-    method: "get",
+    path: '/users/self',
+    method: 'get',
     action: userCtrl.fetchSelf,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/users/transfer",
-    method: "post",
+    path: '/users/transfer',
+    method: 'post',
     action: userCtrl.transferFund,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/users/referrals",
-    method: "get",
+    path: '/users/referrals',
+    method: 'get',
     action: referralCtrl.fetchUserReferrals,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/users/:userId",
-    method: "delete",
+    path: '/users/:userId',
+    method: 'delete',
     action: userCtrl.deleteUser,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   // plans
   {
-    path: "/plans",
-    method: "get",
-    action: planCtrl.fetchPlans,
-    //middleware: [authMw.checkAuth]
+    path: '/plans',
+    method: 'get',
+    action: planCtrl.fetchPlans
+    // middleware: [authMw.checkAuth]
   },
   {
-    path: "/plans/:planId/invest",
-    method: "post",
+    path: '/plans/:planId/invest',
+    method: 'post',
     action: investmentCtrl.createInvestment,
     middleware: [authMw.checkAuth]
   },
   // deposits
   {
-    path: "/deposits",
-    method: "get",
+    path: '/deposits',
+    method: 'get',
     action: depositCtrl.fetchDeposit,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/deposits",
-    method: "post",
+    path: '/deposits',
+    method: 'post',
     action: depositCtrl.createDeposit,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/updateDeposit/:id",
-    method: "put",
+    path: '/updateDeposit/:id',
+    method: 'put',
     action: depositCtrl.updateDeposit,
     middleware: [authMw.checkAuth]
   },
-  //paystack endpoints
+
+  // paystack endpoints
   {
-    path: "/paystackSave",
-    method: "post",
+    path: '/paystackSave',
+    method: 'post',
     action: paystackCtrl.createTx,
     middleware: [authMw.checkAuth]
   },
   // withdrawals
   {
-    path: "/withdrawals",
-    method: "get",
+    path: '/withdrawals',
+    method: 'get',
     action: withdrawalCtrl.fetchWithdrawals,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/withdrawals",
-    method: "post",
+    path: '/withdrawals',
+    method: 'post',
     action: withdrawalCtrl.requestWithdrawal,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/withdrawals/:id",
-    method: "delete",
+    path: '/withdrawals/:id',
+    method: 'delete',
     action: withdrawalCtrl.cancelWithdrawal,
     middleware: [authMw.checkAuth]
   },
   // investment
   {
-    path: "/investments",
-    method: "get",
+    path: '/investments',
+    method: 'get',
     action: investmentCtrl.fetchSubscriptions,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/stats",
-    method: "get",
+    path: '/stats',
+    method: 'get',
     action: statCtrl.fetchStats,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/tfa",
-    method: "get",
+    path: '/tfa',
+    method: 'get',
     action: tfaCtrl.setupTfa,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/tfa",
-    method: "post",
+    path: '/tfa',
+    method: 'post',
     action: tfaCtrl.verifyTfa,
     middleware: [authMw.checkAuth]
   },
   {
-    path: "/tfa",
-    method: "delete",
+    path: '/tfa',
+    method: 'delete',
     action: tfaCtrl.destroyTfa,
     middleware: [authMw.checkAuth]
   },
   // Admin routes
   // Users
   {
-    path: "/admin/users",
-    method: "get",
+    path: '/admin/users',
+    method: 'get',
     action: adminUserCtrl.index,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/users",
-    method: "post",
+    path: '/admin/users',
+    method: 'post',
     action: adminUserCtrl.store,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/users/:id",
-    method: "get",
+    path: '/admin/users/:id',
+    method: 'get',
     action: adminUserCtrl.show,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/users/:id",
-    method: "put",
+    path: '/admin/users/:id',
+    method: 'put',
     action: adminUserCtrl.update,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/users/:id",
-    method: "delete",
+    path: '/admin/users/:id',
+    method: 'delete',
     action: adminUserCtrl.destroy,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   // Deposits
   {
-    path: "/admin/deposits",
-    method: "get",
+    path: '/admin/deposits',
+    method: 'get',
     action: adminDepositCtrl.index,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/deposits/:id",
-    method: "put",
+    path: '/admin/deposits/:id',
+    method: 'put',
     action: adminDepositCtrl.update,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/deposits/:id/hash",
-    method: "put",
+    path: '/admin/deposits/:id/hash',
+    method: 'put',
     action: adminDepositCtrl.updateTxId,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/deposits/:id/repend",
-    method: "put",
+    path: '/admin/deposits/:id/repend',
+    method: 'put',
     action: adminDepositCtrl.rependDeposit,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   // Withdrawal
-   {
-    path: "/admin/withdrawals",
-    method: "get",
+  {
+    path: '/admin/withdrawals',
+    method: 'get',
     action: adminWithdrawalCtrl.index,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/withdrawals/:id",
-    method: "put",
+    path: '/admin/withdrawals/:id',
+    method: 'put',
     action: adminWithdrawalCtrl.update,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   // Investment
   {
-    path: "/admin/investments",
-    method: "get",
+    path: '/admin/investments',
+    method: 'get',
     action: adminInvestmentCtrl.index,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   // Plan
   {
-    path: "/admin/plans",
-    method: "get",
+    path: '/admin/plans',
+    method: 'get',
     action: adminPlanCtrl.index,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/plans",
-    method: "post",
+    path: '/admin/plans',
+    method: 'post',
     action: adminPlanCtrl.store,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/plans/:id",
-    method: "get",
+    path: '/admin/plans/:id',
+    method: 'get',
     action: adminPlanCtrl.show,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/plans/:id",
-    method: "put",
+    path: '/admin/plans/:id',
+    method: 'put',
     action: adminPlanCtrl.update,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   },
   {
-    path: "/admin/stats",
-    method: "get",
+    path: '/admin/stats',
+    method: 'get',
     action: adminStatCtrl.index,
     middleware: [authMw.checkAuth, authMw.isAdmin]
   }

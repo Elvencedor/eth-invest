@@ -15,7 +15,6 @@ export async function createTx(req: Request, res: Response){
     }
 
     paystackService.saveTransaction({
-        email: req.body.email,
         amount: req.body.amount,
         reference: req.body.reference,
         userId: req.session!.user.id

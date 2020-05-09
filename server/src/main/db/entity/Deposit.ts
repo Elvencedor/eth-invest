@@ -15,11 +15,6 @@ export enum DepositStatus {
   CANCELLED = 'cancelled',
 }
 
-export enum assets{
-  BTC = 'btc',
-  ETH = 'eth'
-}
-
 @Entity()
 export class Deposit {
   @PrimaryGeneratedColumn('uuid')
@@ -46,8 +41,7 @@ export class Deposit {
   // asset amount
   @Column({
     nullable: true,
-    enum: assets,
-    default: assets.ETH
+    default: null
   })
   assetAmount!:string
 

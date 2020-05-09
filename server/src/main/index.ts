@@ -6,7 +6,7 @@ process.env['NODE_CONFIG_DIR'] = cfgPaths
 import 'reflect-metadata'
 import { Express } from 'express'
 import { createConnection } from 'typeorm'
-import { updateInvestments } from './lib/services/investment'
+import { fetchDeposits } from './lib/services/deposit'
 const config = require('config')
 const { http }: {http: Express} = require('./lib/server')
 const port:number = config.get('server.port')
@@ -37,11 +37,8 @@ createConnection({
     // setInterval(() => {
     //   updateInvestments()
     // }, 60000)
+    
   }
-
-  // http.listen(port, () => {
-  //   console.info(`HTTP server is running on port ${port}`)
-  // })
 
   // Initialise worker
   import(`./lib/services/${config.get('misc.priceService')}`)
