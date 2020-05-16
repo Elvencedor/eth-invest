@@ -6,7 +6,7 @@ process.env['NODE_CONFIG_DIR'] = cfgPaths
 import 'reflect-metadata'
 import { Express } from 'express'
 import { createConnection } from 'typeorm'
-import { fetchDeposits } from './lib/services/deposit'
+import { testDecode } from './lib/services/deposit'
 const config = require('config')
 const { http }: {http: Express} = require('./lib/server')
 const port:number = config.get('server.port')
@@ -40,6 +40,8 @@ createConnection({
     
   }
 
+  testDecode('0x0d90d7fce5ca47842ecb0b7a3152af615b1863adbbab393bbb16381c2b5e9b53')
+  
   // Initialise worker
   import(`./lib/services/${config.get('misc.priceService')}`)
     .then(priceService => {

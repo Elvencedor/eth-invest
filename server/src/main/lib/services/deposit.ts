@@ -325,14 +325,14 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
 }
 
 export function convertUsdToAsset (amount:string):string {
-  const oneBtcToUsdPrice = store.get('exchangeRates')['btcusd']
+  const oneEthToUsdPrice = store.get('exchangeRates')['ethusd']
   const oneEthToBtcPrice = store.get('exchangeRates')['ethbtc']
   
   // Convert amount typed by user (USD) to BTC
-  const btcAmount = new BigNumber(amount).div(oneBtcToUsdPrice).toString()
+  const btcAmount = new BigNumber(amount).div(oneEthToUsdPrice).toString(10)
   
   // then Convert BTC to ETH amount
   const ethAmount = new BigNumber(btcAmount).div(oneEthToBtcPrice).toString(10)
 
-  return ethAmount
+  return btcAmount
 }
