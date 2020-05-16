@@ -3,20 +3,32 @@
     <h1 class="text-3xl font-bold text-white">Support</h1>
     <div class="w-full max-w-xl text-center mt-10">
       <div class="flex flex-wrap">
-        <div class="w-1/3">
-          <a href="http://t.me/CrespoCSO" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Telegram">
+        <!-- <div class="w-1/3">
+          <a href="" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Telegram">
             <i class="fab fa-telegram fa-2x"></i>
             <div class="mt-2">Telegram</div>
           </a>
+        </div> -->
+        <div class="w-1/4">
+          <a href="https://web.facebook.com/Eth-Invest-102500161459049" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Facebook">
+            <i class="fab fa-facebook fa-2x"></i>
+            <div class="mt-2">Facebook</div>
+          </a>
         </div>
-        <div class="w-1/3">
-          <a href="https://twitter.com/clubcrespo/" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Twitter">
+        <div class="w-1/4">
+          <a href="https://www.instagram.com/ethinvest_club" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Instagram">
+            <i class="fab fa-instagram fa-2x"></i>
+            <div class="mt-2">Instagram</div>
+          </a>
+        </div>
+        <div class="w-1/4">
+          <a href="https://twitter.com/ethinvest_club" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Twitter">
             <i class="fab fa-twitter fa-2x"></i>
             <div class="mt-2">Twitter</div>
           </a>
         </div>
-        <div class="w-1/3">
-          <a href="mailto:cresposachi@gmail.com" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Mail">
+        <div class="w-1/4">
+          <a href="mailto:ethinvest.club@gmail.com" class="block border-2 border-green-500 rounded m-4 p-4 text-green-500 text-center text-sm hover:bg-green-500 hover:text-gray-900" title="Mail">
             <i class="fas fa-at fa-2x"></i>
             <div class="mt-2">Mail</div>
           </a>

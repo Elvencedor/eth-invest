@@ -35,7 +35,7 @@
           ${{ BigNumber(props.item.amount).toFormat(2) }}
         </div>
         <div slot="yield" slot-scope="props">
-          ${{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).toFormat(2) }} / {{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).div(priceState.oneBtcToUsdPrice).toFormat(8) || '...' }} BTC
+          ${{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).toFormat(2) }} / {{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).div(priceState.oneEthToUsdPrice).toFormat(8) || '...' }} ETH
         </div>
         <div slot="status" slot-scope="props">
           <span v-if="props.item.status === 'running'" class="text-yellow-600 text-center inline-block px-3 py-1 rounded-full">

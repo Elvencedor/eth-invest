@@ -27,7 +27,7 @@ export async function fetchWithdrawals (query:any, options: PaginationOptionsInt
       'withdrawal.updatedAt'
     ])
     .where('withdrawal.userId = :id', { id: query.userId })
-    .andWhere('withdrawal.id like :idStr', { idStr: '%' + searchQuery + '%' })
+    // .orWhere('withdrawal.id like :idStr', { idStr: '%' + searchQuery + '%' })
     .skip(options.limit * (options.page - 1))
     .take(options.limit)
     .orderBy('withdrawal.createdAt', 'DESC')

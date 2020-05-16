@@ -335,4 +335,8 @@ export function convertUsdToAsset (amount:string):string {
   const ethAmount = new BigNumber(btcAmount).div(oneEthToBtcPrice).toString(10)
 
   return btcAmount
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6d88d2551cee47a6db5bae97e0bdb442137013e5

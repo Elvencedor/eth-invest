@@ -24,7 +24,7 @@ Vue.use(Tawk, {
 Vue.config.productionTip = false
 
 // Set baseURL for axios request
-axios.defaults.baseURL = `http://localhost:3000/api`
+axios.defaults.baseURL = `${process.env.VUE_APP_API_HOST}/api`
 // Make axios send cookies by default
 axios.defaults.withCredentials = true
 
