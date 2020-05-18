@@ -606,7 +606,7 @@ export default {
     } catch (err) {
       izitoast.error({
         title: "Error",
-        message: "An unknown error occugreen.",
+        message: "An unknown error occurred.",
       });
     }
   },
@@ -629,7 +629,7 @@ export default {
     }
   },
 
-  befogreenestroy() {
+  beforeDestroy() {
     clearInterval(this.interval);
   },
 };

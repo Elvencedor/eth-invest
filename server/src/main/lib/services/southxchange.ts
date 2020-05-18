@@ -22,23 +22,14 @@ export const getTickers = async (tickers: string[]) => {
 
 export async function callApi () {
   return new Promise((resolve, reject) => {
-<<<<<<< HEAD
     getTickers(['ETH/USD', 'BTC/USD'])
-=======
-    getTickers(['ETH/BTC', 'ETH/USD'])
->>>>>>> 6d88d2551cee47a6db5bae97e0bdb442137013e5
       .then(tickers => {
         const ETH_USDPrice = tickers[0].Last
         const BTC_USDPrice = tickers[1].Last
 
         store.set('exchangeRates', {
-<<<<<<< HEAD
           'btcusd': BTC_USDPrice,
           'ethusd': ETH_USDPrice
-=======
-          'ethusd': BTC_USDPrice,
-          'ethbtc': ETH_BTCPrice
->>>>>>> 6d88d2551cee47a6db5bae97e0bdb442137013e5
         })
 
         resolve()

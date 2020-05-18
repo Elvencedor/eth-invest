@@ -32,7 +32,7 @@
           </button>
         </div>
         <div slot="amount" slot-scope="props">
-          ${{ BigNumber(props.item.amount).toFormat(2) }}
+          N{{ BigNumber(props.item.amount).toFormat(2) }}
         </div>
         <div slot="status" slot-scope="props">
           <span v-if="props.item.status === 'cancelled'" class="text-red-600 text-center inline-block px-3 py-1 rounded-full">
@@ -71,7 +71,7 @@
       <div slot="title">Deposit Funds (paystack)</div>
       <div slot="content">
           <div v-if="step === 0">
-            <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount(USD)</label>
+            <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount(NGN)</label>
             <input
               type="text"
               id="amount"
@@ -86,12 +86,16 @@
               class="block w-full mt-3 bg-gray-200 p-4 rounded focus:outline-none text-gray-700"
               placeholder="Email here..."
             >
+            <div slot="footer">
+              <button @click="pay" :disabled="depositBtn.make" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">
+                <span v-if="depositBtn.make" class="fas fa-spinner fa-spin"></span>
+                <span v-else>Deposit</span>
+              </button>
+            </div>
           </div>
-          <div slot="footer">
-            <button @click="pay" :disabled="depositBtn.make" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">
-              <span v-if="depositBtn.make" class="fas fa-spinner fa-spin"></span>
-              <span v-else>Deposit</span>
-            </button>
+          <div v-if="step === 1">
+            <span class="fas fa-spinner fa-spin"></span>
+            <span> Redirecting to the payment portal...</span>
           </div>
       </div>
     </Modal>
@@ -100,7 +104,7 @@
       <div slot="content">
         <div v-if="step === 0">
           <div>
-            <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount(USD)</label>
+            <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount(NGN)</label>
             <input
               type="test"
               id="amount"
@@ -150,7 +154,7 @@
       <div slot="title">Confirm Deposit</div>
       <div slot="content">
         <p class="bg-red-100 text-sm text-red-800 px-4 py-2 rounded">
-          To finalize your deposit, please make an exact (do not round/approximate amount) payment of <b>{{ selectedDeposit.csoAmount }} ETH</b> to the account below, provide the transaction ID/hash, then confirm.
+          To finalize your deposit, please make an exact (do not round/approximate amount) payment of <b>{{ selectedDeposit.assetAmount }} ETH</b> to the account below, provide the transaction ID/hash, then confirm.
         </p>
         <div class="flex justify-center items-center mt-2">
           <img :src="selectedDeposit.url" alt="address barcode">
@@ -192,7 +196,7 @@ import mixins from '../mixins'
 import BigNumber from 'bignumber.js'
 import VueSession from 'vue-session'
 import * as paystack from 'paystack'
-const paystackService = new paystack('sk_test_95a9b3d3f60fdd98ece68c4ca8a76e0f496c0cef')
+const paystackService = new paystack('sk_test_e62d31faaf67d3af0108224046b2c3de72ccbb9c')
 
 Vue.use(VueSession)
 
@@ -383,6 +387,7 @@ export default {
         this.form.amount = ''
         this.form.email = ''
         this.depositBtn.make = false
+        this.step = 1
       }
     },
 

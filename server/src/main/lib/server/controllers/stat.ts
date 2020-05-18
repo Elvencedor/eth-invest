@@ -47,10 +47,12 @@ export async function fetchStats (req: Request, res: Response) {
 
 export async function fetchConversion (req: Request, res: Response) {
   const oneEthToUsdPrice = store.get('exchangeRates')['ethusd']
-  const oneEthToBtcPrice = store.get('exchangeRates')['ethbtc']
+  const oneBtcToUsdPrice = store.get('exchangeRates')['btcusd']
+  const oneNgnToUsdPrice = store.get('forexRates')['ngnusd']
       
   respond(res, 200, null, {
     oneEthToUsdPrice,
-    oneEthToBtcPrice
+    oneBtcToUsdPrice,
+    oneNgnToUsdPrice
   })
 }

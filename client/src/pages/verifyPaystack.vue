@@ -22,7 +22,7 @@ import Modal from '@/components/main/utils/Modal'
 import mixins from '../mixins'
 import VueSession from 'vue-session'
 import * as paystack from 'paystack'
-const paystackService = paystack('sk_test_95a9b3d3f60fdd98ece68c4ca8a76e0f496c0cef')
+const paystackService = paystack('sk_test_e62d31faaf67d3af0108224046b2c3de72ccbb9c')
 
 Vue.use(VueSession)
 
@@ -69,12 +69,6 @@ export default {
                     }
                     
                 })
-                
-                // .then(res => {
-                //     this.console.log(this.form)
-                //     this.console.log(res)
-                // })
-                
 
                 //TODO: link this module to the payment init and test
             }

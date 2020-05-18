@@ -32,10 +32,10 @@
           {{ props.item.plan.name }} ({{ props.item.percentage }}%, {{ props.item.duration }} days)
         </div>
         <div slot="capital" slot-scope="props">
-          ${{ BigNumber(props.item.amount).toFormat(2) }}
+          N{{ BigNumber(props.item.amount).toFormat(2) }}
         </div>
         <div slot="yield" slot-scope="props">
-          ${{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).toFormat(2) }} / {{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).div(priceState.oneEthToUsdPrice).toFormat(8) || '...' }} ETH
+          N{{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).toFormat(2) }} / {{ BigNumber(props.item.amount).times(props.item.percentage).div(100).plus(props.item.amount).times(priceState.oneNgnToUsdPrice).div(priceState.oneEthToUsdPrice).toFormat(8) || '...' }} ETH
         </div>
         <div slot="status" slot-scope="props">
           <span v-if="props.item.status === 'running'" class="text-yellow-600 text-center inline-block px-3 py-1 rounded-full">
@@ -47,7 +47,11 @@
         </div>
         <div slot="createdAt" slot-scope="props"> {{ formatDate(props.item.createdAt) }} </div>
       </TableComponent>
+      <a href="https://www.freeforexapi.com">
+        <img alt="Free Forex API" src="https://www.freeforexapi.com/Images/link.png" height="20">
+      </a>
     </div>
+
   </section>
 </template>
 

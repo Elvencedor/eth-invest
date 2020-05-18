@@ -1,5 +1,6 @@
 const store:any = {
-  exchangeRates: {}
+  exchangeRates: {},
+  forexRates: {}
 }
 
 export function get(key:string) {

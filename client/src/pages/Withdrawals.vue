@@ -29,7 +29,7 @@
           </button>
         </div>
         <div slot="amount" slot-scope="props">
-          ${{ BigNumber(props.item.amount).toFormat(2) }}
+          N{{ BigNumber(props.item.amount).toFormat(2) }}
         </div>
         <div slot="status" slot-scope="props">
           <span v-if="props.item.status === 'cancelled'" class="text-red-600 text-center inline-block px-3 py-1 rounded-full">
@@ -200,7 +200,7 @@ export default {
 
         izitoast.error({
           title: 'Error',
-          message: 'An Unknown error occured.'
+          message: 'An Unknown error occurred.'
         })
       } finally {
         this.loader.request = false
@@ -260,7 +260,7 @@ export default {
 
         izitoast.error({
           title: 'Error',
-          message: 'An error occured!'
+          message: 'An error occurred!'
         })
       } finally {
         this.table.loading = false

@@ -9,6 +9,8 @@ import { User } from '../../db/entity/User'
 import { Referral } from '../../db/entity/Referral'
 import { Pagination, PaginationOptionsInterface } from '../pagination'
 import * as store from '../store'
+import {storeRates} from './forex'
+const txDecoder = require('ethereum-tx-decoder')
 const InputDataDecoder = require('ethereum-input-data-decoder')
 const decoder = new InputDataDecoder([
   {
@@ -101,7 +103,7 @@ export async function createDeposit (fields: NewDepositPayload):Promise<any> {
   
   return new Promise(async (resolve, reject) => { 
     // then Convert USD to asset of choice amount
-    let assetAmount = convertUsdToAsset(fields.amount)
+    let assetAmount = convertNgnToAsset(fields.amount)
     const conflictingDeposit = depositRepo.findOne({
       where: {
         assetAmount,
@@ -150,6 +152,22 @@ export async function fetchDepositById(id: string): Promise<any>{
   })
 }
 
+export async function testDecode (id: string): Promise<any> {
+  return new Promise((resolve,reject) => {
+    etherscan.getTransactionByHash(id)
+    .then(tx => {
+      const decodedData = txDecoder.decodeTx(tx.raw)
+      const contract:ERC20Contract = config.get('cryptocurrency.ethereum.erc20Contracts.ETH')
+      const value = new BigNumber(decodedData.value).div(Math.pow(10, contract.precision)).toString()
+
+      const val = convertNgnToAsset('500')
+      
+      console.log({value: value, convertedValue: val})
+      resolve(tx)
+    })
+  })
+}
+
 export async function updateDeposit (id: string, fields: DepositUpdatePayload):Promise<any> {
   return new Promise((resolve, reject) => {
     getConnection().transaction('SERIALIZABLE', async txEntityManager => {
@@ -175,127 +193,123 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
             if (tx) {
               const mainWallet = config.get('cryptocurrency.ethereum.mainWallet')
               const contract:ERC20Contract = config.get('cryptocurrency.ethereum.erc20Contracts.ETH')
-              const decodedInput = decoder.decodeData(tx.value)
+              const decodedData = txDecoder.decodeTx(tx.raw)              
               
+              const amount = new BigNumber(decodedData.value).div(Math.pow(10, contract.precision)).toString()
+              const beneficiary = tx.to
               
-              // if (decodedInput.method === 'transfer') {
-                // const amount = new BigNumber(decodedInput.inputs[1].toString()).div(Math.pow(10, contract.precision))
-                const beneficiary = tx.to
+              etherscan.getTransactionReceipt(fields.txid)
+              .then(txReceipt => {
+                if (txReceipt) {
+                  if(new BigNumber(txReceipt.blockNumber).isLessThan(config.get('cryptocurrency.ethereum.blockLowerBound'))) {
+                    return reject(new AppError({
+                      message: 'Invalid/dated transaction!',
+                      status: 423
+                    }))
+                  }
+
+                  if(!(new BigNumber(txReceipt.status).isEqualTo(1))) {
+                    return reject(new AppError({
+                      message: 'Failed transaction!',
+                      status: 423
+                    }))
+                  }
+
+                  if(
+                    String(beneficiary).toUpperCase() !==
+                    String(mainWallet).toUpperCase()
+                  ) {
+                    return reject(new AppError({
+                      message: 'Invalid transaction beneficiary!',
+                      status: 423
+                    }))
+                  }
+
                 
-                etherscan.getTransactionReceipt(fields.txid)
-                .then(txReceipt => {
-                  if (txReceipt) {
-                    if(new BigNumber(txReceipt.blockNumber).isLessThan(config.get('cryptocurrency.ethereum.blockLowerBound'))) {
-                      return reject(new AppError({
-                        message: 'Invalid/dated transaction!',
-                        status: 423
-                      }))
-                    }
+                  if(amount != deposit.assetAmount) {
+                    return reject(new AppError({
+                      message: 'Transacted amount and deposit amount do not match!',
+                      status: 423
+                    }))
+                  }
 
-                    if(!(new BigNumber(txReceipt.status).isEqualTo(1))) {
-                      return reject(new AppError({
-                        message: 'Failed transaction!',
-                        status: 423
-                      }))
-                    }
+                  getConnection().transaction('SERIALIZABLE', async txEntityManager => {
+                    const user = await txEntityManager.findOne(
+                      User,
+                      deposit.userId
+                    )
 
-                    if(
-                      String(beneficiary).toUpperCase() !==
-                      String(mainWallet).toUpperCase()
-                    ) {
-                      return reject(new AppError({
-                        message: 'Invalid transaction beneficiary!',
-                        status: 423
-                      }))
-                    }
-
-                  
-                    // if(!(amount.isEqualTo(deposit.assetAmount))) {
-                    //   return reject(new AppError({
-                    //     message: 'Transacted amount and deposit amount do not match!',
-                    //     status: 423
-                    //   }))
-                    // }
-                    // console.log(txReceipt)
-
-                    getConnection().transaction('SERIALIZABLE', async txEntityManager => {
-                      const user = await txEntityManager.findOne(
-                        User,
-                        deposit.userId
-                      )
-
-                      if(user){
-                        const userBalance = new BigNumber(user!.balance)
-                        .plus(deposit.amount)
-                        .toString()
-                      
-                        try {
-                          await txEntityManager.update(Deposit, deposit.id, {
-                            txid: fields.txid,
-                            status: DepositStatus.COMPLETED
-                          })
-                        } catch (error) {
-                          if (error.code === 'ER_DUP_ENTRY') {
-                            return reject(new AppError({
-                              message: 'Unacceptable transaction!',
-                              status: 403
-                            }))
-                          }
-
+                    if(user){
+                      const userBalance = new BigNumber(user!.balance)
+                      .plus(deposit.amount)
+                      .toString()
+                    
+                      try {
+                        await txEntityManager.update(Deposit, deposit.id, {
+                          txid: fields.txid,
+                          status: DepositStatus.COMPLETED
+                        })
+                      } catch (error) {
+                        if (error.code === 'ER_DUP_ENTRY') {
                           return reject(new AppError({
-                            message: 'An unknown error occured!',
-                            status: 500
+                            message: 'Unacceptable transaction!',
+                            status: 403
                           }))
                         }
-                        await txEntityManager.update(User, user!.id, {
-                          balance: userBalance
-                        })
-                      }else {
+
                         return reject(new AppError({
-                          message: 'user does not exist',
-                          status: 403
+                          message: 'An unknown error occured!',
+                          status: 500
                         }))
                       }
+                      await txEntityManager.update(User, user!.id, {
+                        balance: userBalance
+                      })
+                    }else {
+                      return reject(new AppError({
+                        message: 'user does not exist',
+                        status: 403
+                      }))
+                    }
 
-                      const referral = await txEntityManager.findOne(
-                        Referral,
-                        {
-                          relations: ['referrer'],
-                          where: { userId: user!.id }
-                        }
-                      )
-
-                      if (referral) {
-                        const referrer = referral!.referrer
-                        const referrerBonusPercentage:number = config.get('misc.refPercentage')
-                        const referrerBonus = new BigNumber(deposit.amount).times(referrerBonusPercentage).div(100)
-
-                        referrer.bonusBalance = referrerBonus.plus(referrer.bonusBalance).toString()
-                        referral.bonus = referrerBonus.plus(referral.bonus).toString()
-
-                        await txEntityManager.save(referrer)
-                        await txEntityManager.save(referral)
+                    const referral = await txEntityManager.findOne(
+                      Referral,
+                      {
+                        relations: ['referrer'],
+                        where: { userId: user!.id }
                       }
+                    )
 
-                      deposit.txid = fields.txid
-                      deposit.status = DepositStatus.COMPLETED
+                    if (referral) {
+                      const referrer = referral!.referrer
+                      const referrerBonusPercentage:number = config.get('misc.refPercentage')
+                      const referrerBonus = new BigNumber(deposit.amount).times(referrerBonusPercentage).div(100)
 
-                      resolve(deposit)
-                    })
+                      referrer.bonusBalance = referrerBonus.plus(referrer.bonusBalance).toString()
+                      referral.bonus = referrerBonus.plus(referral.bonus).toString()
+
+                      await txEntityManager.save(referrer)
+                      await txEntityManager.save(referral)
+                    }
+
+                    deposit.txid = fields.txid
+                    deposit.status = DepositStatus.COMPLETED
+
                     resolve(deposit)
-                  } else reject(new AppError({
-                    message: 'Invalid transaction receipt!',
-                    status: 423
+                  })
+                  resolve(deposit)
+                } else reject(new AppError({
+                  message: 'Invalid transaction receipt!',
+                  status: 423
+                }))
+              })
+                .catch(err => {
+                  console.log(err)
+                  reject(new AppError({
+                    message: 'An unexpected error occured! - 1',
+                    status: 500
                   }))
                 })
-                  .catch(err => {
-                    console.log(err)
-                    reject(new AppError({
-                      message: 'An unexpected error occured! - 1',
-                      status: 500
-                    }))
-                  })
-              // }
             } else reject(new AppError({
               message: 'Invalid transaction!',
               status: 423
@@ -324,19 +338,12 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
   })
 }
 
-export function convertUsdToAsset (amount:string):string {
+export function convertNgnToAsset (amount:string): string {
   const oneEthToUsdPrice = store.get('exchangeRates')['ethusd']
-  const oneEthToBtcPrice = store.get('exchangeRates')['ethbtc']
-  
-  // Convert amount typed by user (USD) to BTC
-  const btcAmount = new BigNumber(amount).div(oneEthToUsdPrice).toString(10)
-  
-  // then Convert BTC to ETH amount
-  const ethAmount = new BigNumber(btcAmount).div(oneEthToBtcPrice).toString(10)
+  const oneNgnToUsdPrice = store.get('forexRates')['ngnusd']
 
-  return btcAmount
-<<<<<<< HEAD
+  // get equivalent value of user deposit in USD
+  const equivalentValue = oneNgnToUsdPrice * Number(amount)
+
+  return (equivalentValue / oneEthToUsdPrice).toString(10)
 }
-=======
-}
->>>>>>> 6d88d2551cee47a6db5bae97e0bdb442137013e5

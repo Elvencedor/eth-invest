@@ -6,7 +6,7 @@ process.env['NODE_CONFIG_DIR'] = cfgPaths
 import 'reflect-metadata'
 import { Express } from 'express'
 import { createConnection } from 'typeorm'
-import { testDecode } from './lib/services/deposit'
+import {updateInvestments} from './lib/services/investment'
 const config = require('config')
 const { http }: {http: Express} = require('./lib/server')
 const port:number = config.get('server.port')
@@ -33,16 +33,26 @@ createConnection({
     })
     await seedConn.close()
 
-    // updateInvestments()
-    // setInterval(() => {
-    //   updateInvestments()
-    // }, 60000)
+    updateInvestments()
+    setInterval(() => {
+      updateInvestments()
+    }, 60000)
     
   }
+ 
+  // Initialise workers
+  import(`./lib/services/forex`)
+  .then(rateConverter => {
+    rateConverter.init()
+      .then( () => {
+        console.info('FreeForexAPI service initiated.')
+      })
+      .catch((err: {message:any}) => {
+        console.error('FreeForexAPI error: ', err.message)
+        process.exit(1)
+      })
+  })
 
-  testDecode('0x0d90d7fce5ca47842ecb0b7a3152af615b1863adbbab393bbb16381c2b5e9b53')
-  
-  // Initialise worker
   import(`./lib/services/${config.get('misc.priceService')}`)
     .then(priceService => {
       priceService.init()
@@ -56,5 +66,6 @@ createConnection({
           process.exit(1)
         })
     })
+
 
 }).catch(err => console.error('Database connection error:', err.message))

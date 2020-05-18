@@ -6,15 +6,18 @@ import { Deposit, DepositStatus } from '../../db/entity/Deposit'
 import { User } from '../../db/entity/User'
 import { Referral } from '../../db/entity/Referral'
 import BigNumber from 'bignumber.js'
+import * as store from '../store'
 
 
 export async function saveTransaction(fields:paystackPayload):Promise<any>{
     return new Promise((resolve, reject) => {
         const txRepo = getRepository(Deposit)
+        const assetAmount = convertNgnToAsset(fields.amount)
         txRepo.save(txRepo.create(
             {
                 userId: fields.userId,
                 amount: fields.amount,
+                assetAmount: assetAmount,
                 txid: fields.reference,
                 status: DepositStatus.COMPLETED
             }
@@ -63,4 +66,14 @@ export async function saveTransaction(fields:paystackPayload):Promise<any>{
               }
         })       
     })
+}
+
+export function convertNgnToAsset (amount:string): string {
+const oneEthToUsdPrice = store.get('exchangeRates')['ethusd']
+const oneNgnToUsdPrice = store.get('forexRates')['ngnusd']
+console.log(oneEthToUsdPrice)
+// get equivalent value of user deposit in USD
+const equivalentValue = oneNgnToUsdPrice * Number(amount)
+
+return (equivalentValue / oneEthToUsdPrice).toString(10)
 }
