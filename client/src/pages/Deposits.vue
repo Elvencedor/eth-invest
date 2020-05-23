@@ -108,7 +108,7 @@
             <input
               type="test"
               id="amount"
-              v-model="form.amount"
+              v-model="payForm.amount"
               class="block w-full mt-3 bg-gray-200 p-4 rounded focus:outline-none text-gray-700"
               placeholder="0.00"
             >
@@ -243,6 +243,9 @@ export default {
       meta: {},
       selectedDeposit: '',
       txid: '',
+      payForm: {
+        amount: ''
+      },
       form: {
         amount: '',
         email: '',
@@ -317,7 +320,7 @@ export default {
       this.depositBtn.make = true
       
       try {
-        const res = await axios.post(`/deposits`, this.form)
+        const res = await axios.post(`/deposits`, this.payForm)
 
         this.selectedDeposit = res.data.data
         this.deposits = [...this.deposits, res.data.data]
@@ -342,7 +345,7 @@ export default {
           })
         }
       } finally {
-        this.form.amount = ''
+        this.payForm.amount = ''
         this.depositBtn.make = false
       }
     },
