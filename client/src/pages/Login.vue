@@ -27,6 +27,7 @@
             class="mt-3 w-full shadow rounded-lg py-3 px-6 bg-green-500 text-gray-900 hover:bg-green-400 disabled:opacity-50"
             :disabled="loading"
           >
+          <span v-if="loading" class="fas fa-spinner fa-spin"> </span>
             Login
           </button>
         </div>

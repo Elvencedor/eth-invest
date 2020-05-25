@@ -8,19 +8,19 @@
       <div class="w-full sm:w-1/4">
         <div class="bg-blue-500 shadow my-2 sm:mx-4 sm:ml-0 p-4 rounded">
           <div class="text-white tracking-wide text-sm text-right mb-1">Account Balance</div>
-          <div class="text-white text-2xl text-right"><span class="pr-1">$</span>{{ BigNumber(user.balance || 0).toFormat(2) }}</div>
+          <div class="text-white text-2xl text-right"><span class="pr-1">N</span>{{ BigNumber(user.balance || 0).toFormat(2) }}</div>
         </div>
       </div>
       <div class="w-full sm:w-1/4">
         <div class="bg-purple-500 shadow my-2 sm:mx-4 sm:ml-0 p-4 rounded">
           <div class="text-white tracking-wide text-sm text-right mb-1">Bonus/Gift Balance</div>
-          <div class="text-white text-2xl text-right"><span class="pr-1">$</span>{{ BigNumber(user.bonusBalance || 0).toFormat(2) }}</div>
+          <div class="text-white text-2xl text-right"><span class="pr-1">N</span>{{ BigNumber(user.bonusBalance || 0).toFormat(2) }}</div>
         </div>
       </div>
       <div class="w-full sm:w-1/4">
         <div class="bg-green-500 shadow my-2 sm:mx-4 sm:ml-0 p-4 rounded">
           <div class="text-white tracking-wide text-sm text-right mb-1">Growing Balance</div>
-          <div class="text-white text-2xl text-right"><span class="pr-1">$</span>{{ BigNumber(stats.growingBalance || 0).toFormat(2) }}</div>
+          <div class="text-white text-2xl text-right"><span class="pr-1">N</span>{{ BigNumber(stats.growingBalance || 0).toFormat(2) }}</div>
         </div>
       </div>
       <div class="w-full sm:w-1/4">
@@ -35,7 +35,7 @@
         <div class="bg-white p-6 rounded shadow-md">
           <div class="flex justify-between items-center flex-wrap sm:flex-no-wrap">
             <h3 class="text-xl text-gray-900 mr-4 sm:mr-0">{{ greeting }}</h3>
-            <router-link to="/invest" class="py-2 px-4 bg-indigo-500 focus:bg-indigo-400 text-white rounded shadow text-sm mt-4 sm:mt-0">
+            <router-link to="/invest" class="py-2 px-4 bg-green-500 focus:bg-green-600 text-white rounded shadow text-sm mt-4 sm:mt-0">
               Invest Now
             </router-link>
           </div>
@@ -89,7 +89,7 @@
             </form>
           </div>
           <div class="py-4 px-6">
-            <button @click="confirmFundTransfer" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">Transfer funds</button>
+            <button @click="confirmFundTransfer" class="w-full p-3 bg-green-500 hover:bg-green-600 rounded text-white">Transfer funds</button>
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
         </div>
       </div>
       <div slot="footer">
-        <button @click="transferFund" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white disabled:opacity-50" :disabled="loading">
+        <button @click="transferFund" class="w-full p-3 bg-green-500 hover:bg-green-600 rounded text-white disabled:opacity-50" :disabled="loading">
           <span v-if="loading" class="fas fa-spinner fa-spin"></span>
           <span v-else>Confirm</span>
         </button>

@@ -5,10 +5,10 @@
         <h1 class="text-xl text-gray-900 mb-2">Deposits</h1>
         <p class="text-gray-600 leading-tight">Local and blockchain transfers to your balance.</p>
       </div>
-      <button @click="openDepositModal" class="py-2 px-4 bg-indigo-500 focus:bg-indigo-400 text-white rounded shadow text-sm mt-4 sm:mt-0">
+      <button @click="openDepositModal" class="py-2 px-4 bg-green-500 text-white focus:bg-green-600 rounded shadow text-sm mt-4 sm:mt-0">
         <span class="fa fa-donate mr-1"></span> Add Funds
       </button>
-      <button @click="openPaystackModal" class="py-2 px-4 bg-indigo-500 focus:bg-indigo-400 text-white rounded shadow text-sm mt-4 sm:mt-0">
+      <button @click="openPaystackModal" class="py-2 px-4 bg-green-500 text-white focus:bg-green-600 rounded shadow text-sm mt-4 sm:mt-0">
         <span class="fa fa-donate mr-1"></span> Use paystack
       </button>
     </div>
@@ -87,7 +87,7 @@
               placeholder="Email here..."
             >
             <div slot="footer">
-              <button @click="pay" :disabled="depositBtn.make" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">
+              <button @click="pay" :disabled="depositBtn.make" class="w-full p-3 bg-green-500 text-white hover:bg-green-600 rounded">
                 <span v-if="depositBtn.make" class="fas fa-spinner fa-spin"></span>
                 <span v-else>Deposit</span>
               </button>
@@ -138,12 +138,12 @@
         </div>
       </div>
       <div slot="footer">
-        <button v-if="step === 0" @click="submit" :disabled="depositBtn.make" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">
+        <button v-if="step === 0" @click="submit" :disabled="depositBtn.make" class="w-full p-3 bg-green-500 text-white hover:bg-green-600 rounded">
           <span v-if="depositBtn.make" class="fas fa-spinner fa-spin"></span>
           <span v-else>Deposit</span>
         </button>
         <div v-if="step === 1">
-          <button @click="update" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white" :disabled="depositBtn.update">
+          <button @click="update" class="w-full p-3 bg-green-500 text-white hover:bg-green-600 rounded" :disabled="depositBtn.update">
             <span v-if="depositBtn.update" class="fas fa-spinner fa-spin"></span>
             <span v-else>Update</span>
           </button>
@@ -175,7 +175,7 @@
         </div>
       </div>
       <div slot="footer">
-        <button @click="update" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white" :disabled="depositBtn.update">
+        <button @click="update" class="w-full p-3 bg-green-500 text-white hover:bg-green-600 rounded" :disabled="depositBtn.update">
           <span v-if="depositBtn.update" class="fas fa-spinner fa-spin"></span>
           <span v-else>Update</span>
         </button>
