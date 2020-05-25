@@ -42,7 +42,7 @@ export async function forgotPassword (req: Request, res: Response) {
 
         mailService.send({
           to: user.email,
-          subject: 'CrespoTradersClub Password Reset',
+          subject: 'Ethinvest Password Reset',
           text: text
         })
 

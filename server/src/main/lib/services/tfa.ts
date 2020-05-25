@@ -22,13 +22,13 @@ export async function setup (fields: any):Promise<any> {
       const secret = speakeasy.generateSecret({
         length: 10,
         name: user.email,
-        issuer: 'CrespoTradersClub'
+        issuer: 'Ethinvest'
       })
 
       const url = speakeasy.otpauthURL({
         secret: secret.base32,
         label: `${user.email}`,
-        issuer: 'CrespoTradersClub',
+        issuer: 'Ethinvest',
         encoding: 'base32'
       })
 
