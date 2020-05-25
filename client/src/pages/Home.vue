@@ -108,7 +108,7 @@
                 PROFESSIONAL SYSTEM
               </h1>
               <p class="text-gray-400 mt-4 uppercase">
-                OUR ANALYST IS BOUND WITH THE RESPONSIBILITY OF MAXIMIZING THE SYSTEM STRENGTH TO A WORLD CLASS INTEREST
+                OUR ANALYSTS ARE BOUND WITH THE RESPONSIBILITY OF MAXIMIZING THE SYSTEM STRENGTH TO A WORLD CLASS INTEREST
               </p>
               <router-link
                 to="/register"
