@@ -5,7 +5,7 @@
         <h1 class="text-xl text-gray-900 mb-2">Investments</h1>
         <p class="text-gray-600 leading-tight">View your running and completed investments.</p>
       </div>
-      <router-link to="/invest" class="py-2 px-4 bg-indigo-500 focus:bg-indigo-400 text-white rounded shadow text-sm mt-4 sm:mt-0">
+      <router-link to="/invest" class="py-2 px-4 focus:bg-green-600 bg-green-500 text-white rounded shadow text-sm mt-4 sm:mt-0">
         <span class="fa fa-plus mr-1"></span> New Investment
       </router-link>
     </div>

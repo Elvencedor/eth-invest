@@ -31,7 +31,7 @@
       <div slot="title">Plan: {{ activePlan.name }}</div>
       <div slot="content">
         <div>
-          <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount (USD)</label>
+          <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount (NGN)</label>
           <input
             type="test"
             id="amount"
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div slot="footer">
-        <button @click="invest" :disabled="loading" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">Invest</button>
+        <button @click="invest" :disabled="loading" class="w-full p-3 bg-green-500 hover:bg-indigo-400 rounded text-white">Invest</button>
       </div>
     </Modal>
   </section>

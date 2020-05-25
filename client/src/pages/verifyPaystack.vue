@@ -2,10 +2,10 @@
     <Modal>
       <div slot="title">Verify payment</div>
       <div slot="content">
-        <span class="w-full text-red-500 bg-red-300 p-3 rounded">Click on the button below to verify your payment.</span>
+        <span class="text-red-500 bg-red-300 p-3 rounded">Click on the button below to verify your payment.</span>
       </div>
       <div slot="footer">
-        <button @click="verify" :disabled="verifyBtn.make" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">
+        <button @click="verify" :disabled="verifyBtn.make" class="w-full p-3 bg-green-500 text-white hover:bg-green-600 rounded">
             <span v-if="verifyBtn.make" class="fas fa-spinner fa-spin"></span>
             <span v-else>click to Verify your payment. </span>          
         </button>
@@ -53,7 +53,7 @@ export default {
 
     methods: {
         async verify() {
-            this.verifyBtn = true
+            this.verifyBtn.make = true
             
             try{
                 paystackService.transaction.verify({
@@ -70,7 +70,6 @@ export default {
                     
                 })
 
-                //TODO: link this module to the payment init and test
             }
             catch(err){
                 if(err.response.status === 400){

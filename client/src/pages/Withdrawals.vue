@@ -5,7 +5,7 @@
         <h1 class="text-xl text-gray-900 mb-2">Withdrawals</h1>
         <p class="text-gray-600 leading-tight">Withdrawals from your balances.</p>
       </div>
-      <button @click="openModal" class="py-2 px-4 bg-indigo-500 focus:bg-indigo-400 text-white rounded shadow text-sm text-sm mt-4 sm:mt-0">
+      <button @click="openModal" class="py-2 px-4 bg-green-500 text-white focus:bg-indigo-400 rounded shadow text-sm text-sm mt-4 sm:mt-0">
         <span class="fa fa-share mr-1"></span> Withdraw Funds
       </button>
     </div>
@@ -87,7 +87,7 @@
       <div slot="title">Request Withdrawal</div>
       <div slot="content">
         <div>
-          <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount(USD)</label>
+          <label for="amount" class="block uppercase text-sm text-gray-900 tracking-wide">Amount(NGN)</label>
           <input
             type="test"
             id="amount"
@@ -98,7 +98,7 @@
         </div>
       </div>
       <div slot="footer">
-        <button @click="submit" :disabled="loader.request" class="w-full p-3 bg-indigo-500 hover:bg-indigo-400 rounded text-white">
+        <button @click="submit" :disabled="loader.request" class="w-full p-3 bg-green-500 text-white hover:bg-indigo-400 rounded">
           <span v-if="loader.request" class="fas fa-spinner fa-spin"></span>
           <span v-else>Request</span>
         </button>
