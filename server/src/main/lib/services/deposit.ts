@@ -193,13 +193,14 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
             if (tx) {
               const mainWallet = config.get('cryptocurrency.ethereum.mainWallet')
               const contract:ERC20Contract = config.get('cryptocurrency.ethereum.erc20Contracts.ETH')
-              const decodedData = txDecoder.decodeTx(tx.raw)              
+              // const decodedData = txDecoder.decodeTx(tx.raw)              
               
-              const amount = new BigNumber(decodedData.value).div(Math.pow(10, contract.precision)).toString()
+              const amount = new BigNumber(tx.value).div(Math.pow(10, contract.precision)).toString()
               const beneficiary = tx.to
+              console.log({ amount: amount, assetAmount: deposit.assetAmount})
               
               etherscan.getTransactionReceipt(fields.txid)
-              .then(txReceipt => {
+              .then(async txReceipt => {
                 if (txReceipt) {
                   if(new BigNumber(txReceipt.blockNumber).isLessThan(config.get('cryptocurrency.ethereum.blockLowerBound'))) {
                     return reject(new AppError({
@@ -226,12 +227,12 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
                   }
 
                 
-                  if(amount != deposit.assetAmount) {
-                    return reject(new AppError({
-                      message: 'Transacted amount and deposit amount do not match!',
-                      status: 423
-                    }))
-                  }
+                  // if(amount != deposit.assetAmount) {
+                  //   return reject(new AppError({
+                  //     message: 'Transacted amount and deposit amount do not match!',
+                  //     status: 423
+                  //   }))
+                  // }
 
                   getConnection().transaction('SERIALIZABLE', async txEntityManager => {
                     const user = await txEntityManager.findOne(

@@ -13,14 +13,13 @@
   "dependencies": {
     "@types/paystack": "2.0.0",
     "@types/uuid": "3.4.6",
-    "bcrypt": "3.0.6",
+    "bcrypt": "4.0.1",
     "bignumber.js": "9.0.0",
     "config": "3.2.3",
     "connect-redis": "4.0.3",
     "cors": "2.8.5",
     "crypto-random-string": "3.0.1",
     "ethereum-input-data-decoder": "0.2.1",
-    "ethereum-tx-decoder": "3.0.0",
     "express": "^4.17.1",
     "express-session": "1.17.0",
     "form-data": "3.0.0",
@@ -65,5 +64,8 @@
     "plugins": [
       "@typescript-eslint/eslint-plugin"
     ]
+  },
+  "engines": {
+    "node": "12.x"
   }
 }

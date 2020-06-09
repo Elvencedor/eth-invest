@@ -34,8 +34,7 @@ export default {
   cryptocurrency: {
     ethereum: {
       blockLowerBound: 8945135,
-      // mainWallet: '0x063f135b362549df2acc3266c5d76711e6e1f33e',
-      mainWallet: '0x9706eD6fAb6ad47d4f42d6e85E5BF3eAb96c37D8',
+      mainWallet: '0x17B79f40E70F4BA28771b751b437e50E47ABA445',
       erc20Contracts: {
         ETH: {
           address: 'yourEthAddress',
@@ -46,7 +45,7 @@ export default {
     etherscan: {
       apiKey: 'CZUM587DGVK8CD5UB3DJPR4UC3GZZ6Z25A',
       // Ethereum network (kovan|mainnet)
-      network: 'kovan'
+      network: 'mainnet'
     },
     crex24: {
       requestTimer: 30000
