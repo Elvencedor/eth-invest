@@ -540,7 +540,7 @@ export default {
         {
           question: "More about ETH-Investment?",
           answer:
-            'Check out the following links: <ul class="mt-2"><li>&rarr; <a class="text-green-500" href="https://www.coingecko.com/en/coins/crespo">CoinGecko</a></li><li>&rarr; <a class="text-green-500" href="http://t.me/CrespoCSO">Telegram</a></li><li>&rarr; <a class="text-green-500" href="https://twitter.com/clubcrespo/">Twitter</a></li></ul>',
+            'Check out the following links: <ul class="mt-2"><li>&rarr; <a class="text-green-500" href="https://twitter.com/ethinvest_club/">Twitter</a></li></ul>',
         },
       ],
     };

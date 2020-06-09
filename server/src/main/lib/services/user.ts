@@ -80,7 +80,7 @@ export async function createUser (fields: RegisterPayload):Promise<User> {
     
                   mailService.send({
                     to: user.email,
-                    subject: 'CrespoTradersClub Account Activation',
+                    subject: 'Ethinvest Account Activation',
                     text: text
                   })
                   
@@ -150,7 +150,7 @@ export async function resendConfirmationMail (query: { email:string }):Promise<a
   
         mailService.send({
           to: user.email,
-          subject: 'CrespoTradersClub Account Activation',
+          subject: 'Ethinvest Account Activation',
           text: text
         })
   
@@ -241,7 +241,7 @@ export async function updateUser (query:ProfileUpdatePayload):Promise<User> {
   
             mailService.send({
               to: user.email,
-              subject: 'CrespoTradersClub E-mail Update',
+              subject: 'Ethinvest E-mail Update',
               text: text
             })
 
