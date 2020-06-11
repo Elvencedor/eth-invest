@@ -40,7 +40,6 @@ export default {
                 make: false
             },
             form: {
-                email: this.$session.get('email'),
                 amount: this.$session.get('amount'),
                 reference: this.$session.get('reference-key')
             }
@@ -64,7 +63,7 @@ export default {
                         this.$router.replace({name: 'deposits', query: {status: 'txSaved'}})
                         izitoast.success({
                             title: 'Success',
-                            message:'Transaction complete.'
+                            message:'Transaction complete'
                         })
                     }
                     

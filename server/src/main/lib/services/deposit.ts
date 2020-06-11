@@ -181,12 +181,12 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
                   }
 
                 
-                  // if(amount != deposit.assetAmount) {
-                  //   return reject(new AppError({
-                  //     message: 'Transacted amount and deposit amount do not match!',
-                  //     status: 423
-                  //   }))
-                  // }
+                  if(amount != deposit.assetAmount) {
+                    return reject(new AppError({
+                      message: 'Transacted amount and deposit amount do not match!',
+                      status: 423
+                    }))
+                  }
 
                   getConnection().transaction('SERIALIZABLE', async txEntityManager => {
                     const user = await txEntityManager.findOne(

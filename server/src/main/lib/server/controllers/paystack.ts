@@ -6,16 +6,16 @@ import { AppError } from '../../errors/AppError'
 import BigNumber from 'bignumber.js'
 
 export async function createTx(req: Request, res: Response){
-    if(v.isEmpty(req.body.amount || '')){
+    if(v.isEmpty(`${req.body.amount}` || '')){
         return respond(res, 400, [new AppError({message: 'Amount cannot be empty', status: 400})])
     }
 
-    if(new BigNumber(req.body.amount).isNaN()){
+    if(new BigNumber(`${req.body.amount}`).isNaN()){
         return respond(res, 400, [new AppError({message: 'Amount is invalid', status: 400})])
     }
 
     paystackService.saveTransaction({
-        amount: req.body.amount,
+        amount: `${req.body.amount}`,
         reference: req.body.reference,
         userId: req.session!.user.id
     })
