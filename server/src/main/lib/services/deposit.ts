@@ -9,34 +9,6 @@ import { User } from '../../db/entity/User'
 import { Referral } from '../../db/entity/Referral'
 import { Pagination, PaginationOptionsInterface } from '../pagination'
 import * as store from '../store'
-import {storeRates} from './forex'
-const txDecoder = require('ethereum-tx-decoder')
-const InputDataDecoder = require('ethereum-input-data-decoder')
-const decoder = new InputDataDecoder([
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_to",
-        "type": "address"
-      },
-      {
-        "name": "_value",
-        "type": "uint256"
-      }
-    ],
-    "name": "transfer",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
-])
 
 export async function fetchDeposits (query:any, options: PaginationOptionsInterface):Promise<Pagination<Deposit>> {
   const searchQuery = query.search || ''
@@ -114,7 +86,7 @@ export async function createDeposit (fields: NewDepositPayload):Promise<any> {
     if (conflictingDeposit) {
       const amt = new BigNumber(assetAmount)
       const pre: number = config.get('cryptocurrency.ethereum.erc20Contracts.ETH.precision')
-      const add = `0.${'0'.repeat(pre - 1)}`
+      const add = `0.${'0'.repeat(pre)}1`
       assetAmount = amt.plus(add).toString(10)
     }
     
@@ -152,22 +124,6 @@ export async function fetchDepositById(id: string): Promise<any>{
   })
 }
 
-export async function testDecode (id: string): Promise<any> {
-  return new Promise((resolve,reject) => {
-    etherscan.getTransactionByHash(id)
-    .then(tx => {
-      const decodedData = txDecoder.decodeTx(tx.raw)
-      const contract:ERC20Contract = config.get('cryptocurrency.ethereum.erc20Contracts.ETH')
-      const value = new BigNumber(decodedData.value).div(Math.pow(10, contract.precision)).toString()
-
-      const val = convertNgnToAsset('500')
-      
-      console.log({value: value, convertedValue: val})
-      resolve(tx)
-    })
-  })
-}
-
 export async function updateDeposit (id: string, fields: DepositUpdatePayload):Promise<any> {
   return new Promise((resolve, reject) => {
     getConnection().transaction('SERIALIZABLE', async txEntityManager => {
@@ -193,11 +149,9 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
             if (tx) {
               const mainWallet = config.get('cryptocurrency.ethereum.mainWallet')
               const contract:ERC20Contract = config.get('cryptocurrency.ethereum.erc20Contracts.ETH')
-              // const decodedData = txDecoder.decodeTx(tx.raw)              
               
               const amount = new BigNumber(tx.value).div(Math.pow(10, contract.precision)).toString()
               const beneficiary = tx.to
-              console.log({ amount: amount, assetAmount: deposit.assetAmount})
               
               etherscan.getTransactionReceipt(fields.txid)
               .then(async txReceipt => {

@@ -6,7 +6,8 @@ process.env['NODE_CONFIG_DIR'] = cfgPaths
 import 'reflect-metadata'
 import { Express } from 'express'
 import { createConnection } from 'typeorm'
-import {updateInvestments} from './lib/services/investment'
+import { updateInvestments } from './lib/services/investment'
+import { testDecode } from './lib/services/deposit'
 const config = require('config')
 const { http }: {http: Express} = require('./lib/server')
 const port:number = config.get('server.port')
@@ -33,10 +34,12 @@ createConnection({
     })
     await seedConn.close()
 
-    updateInvestments()
-    setInterval(() => {
-      updateInvestments()
-    }, 60000)
+    // updateInvestments()
+    // setInterval(() => {
+    //   updateInvestments()
+    // }, 60000)
+
+    testDecode()
     
   }
  
