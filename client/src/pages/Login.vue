@@ -1,11 +1,11 @@
 <template>
-  <section class="flex justify-center items-center flex-col py-20 px-6 sm:px-0">
+  <section class="flex justify-center items-center flex-col py-20 px-6 sm:px-0 bg-gray-100 min-h-screen">
     <h1 class="text-3xl text-gray-900">Login</h1>
     <div class="w-full max-w-lg">
-      <form @submit.prevent="loginRequest()" class="border-2 p-6 rounded-lg mt-10">
+      <form @submit.prevent="loginRequest()" class="bg-white shadow-lg p-6 rounded-lg mt-10">
         <div>
           <label for="login" class="text-gray-900">Login</label>
-          <input type="text" v-model="$v.form.login.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-900" id="login" placeholder="E-mail or username">
+          <input type="text" v-model="$v.form.login.$model" class="mt-3 w-full rounded-lg py-3 px-6 border-2 border-gray-200 text-gray-600" id="login" placeholder="E-mail or username">
           <p class="text-xs text-red-500 italic" v-if="$v.form.login.$error && !$v.form.login.required">Login is required</p>
         </div>
         <div class="mt-6">
@@ -13,12 +13,12 @@
             <label for="password" class="text-gray-900">Password</label>
             <router-link to="/forgot_password" class="text-gray-900 underline text-sm">Forgot password?</router-link>
           </div>
-          <input type="password" v-model="$v.form.password.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-900" id="password" placeholder="**********">
+          <input type="password" v-model="$v.form.password.$model" class="mt-3 w-full rounded-lg py-3 px-6 border-2 border-gray-200 text-gray-600" id="password" placeholder="**********">
           <p class="text-red-500 text-xs italic" v-if="$v.form.password.$error && !$v.form.password.required">Password is required</p>
         </div>
         <div v-if="tfaFlag" class="mt-6">
           <label for="token" class="text-gray-900">Token (OTP)</label>
-          <input type="text" v-model.trim="$v.form.token.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-200 text-gray-900" id="token">
+          <input type="text" v-model.trim="$v.form.token.$model" class="mt-3 w-full rounded-lg py-3 px-6 border-2 border-gray-200 text-gray-600" id="token">
           <p class="text-red-500 text-xs italic" v-if="$v.form.token.$error && !$v.form.token.required">Token is required</p>
         </div>
         <div class="mt-6">

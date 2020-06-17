@@ -1,21 +1,21 @@
 <template>
-  <section class="flex justify-center items-center flex-col py-20 px-6 sm:px-0">
-    <h1 class="text-3xl text-white">Forgot password</h1>
+  <section class="flex justify-center items-center flex-col py-20 px-6 sm:px-0 bg-gray-100 min-h-screen">
+    <h1 class="text-3xl text-gray-900">Forgot password</h1>
     <div class="w-full max-w-sm">
-      <form @submit.prevent="submit()" class="bg-gray-800 p-6 rounded-lg mt-10">
+      <form @submit.prevent="submit()" class="bg-white shadow-lg p-6 rounded-lg mt-10">
         <div>
-          <label for="email" class="text-white">E-mail</label>
-          <input type="text" v-model.trim="$v.form.email.$model" class="mt-3 w-full rounded-lg py-3 px-6 bg-gray-900 text-white" id="email">
+          <label for="email" class="text-gray-900">E-mail</label>
+          <input type="text" v-model.trim="$v.form.email.$model" class="mt-3 w-full rounded-lg py-3 px-6 border-2 border-gray-200 text-gray-600" id="email">
           <p class="text-xs text-red-500 italic" v-if="$v.form.email.$error && !$v.form.email.required">Email is required</p>
           <p class="text-xs text-red-500 italic" v-if="$v.form.email.$error && !$v.form.email.email">Invalid email address.</p>
         </div>
         <div class="mt-6">
-          <button type="submit" class="mt-3 w-full shadow rounded-lg py-3 px-6 bg-red-500 hover:bg-red-400">Request password reset</button>
+          <button type="submit" class="mt-3 w-full shadow rounded-lg py-3 px-6 bg-green-500 text-gray-900 hover:bg-green-400 disabled:opacity-50">Request password reset</button>
         </div>
       </form>
       <div class="mt-6 flex justify-between items-center">
-        <router-link to="/login" class="text-white underline">Back to login</router-link>
-        <router-link to="/register" class="text-white underline">Register new account</router-link>
+        <router-link to="/login" class="text-gray-900 underline">Back to login</router-link>
+        <router-link to="/register" class="text-gray-900 underline">Register new account</router-link>
       </div>
     </div>
   </section>

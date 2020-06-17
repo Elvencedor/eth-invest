@@ -1,16 +1,41 @@
 <template>
   <div>
     <section
-      class="relative overflow-hidden border-b-4 border-gray-200 hero"
+      class="relative overflow-hidden border-b-4 border-gray-200 bg-gray-100"
     >
-      <!-- <video autoplay muted loop class="min-w-full min-h-full absolute right-0 bottom-0 object-cover">
-        <source src="../assets/180405_FinancialCharts_24.mp4" type="video/mp4">
-      </video> -->
-      <!-- <div class="absolute w-full h-full flex justify-end items-center">
-        <img src="../assets/illustrations/undraw_Artificial_intelligence_oyxx.svg" class="h-40 mr-6 sm:h-72 sm:mr-40 lg:h-80" style="filter: grayscale(0.6);">
-      </div> -->
 
-      <agile :initial-slide="0" :autoplay="true" :autoplay-speed="4000">
+    <div class="relative min-h-screen">
+      <!-- <img
+        class="object-cover h-full w-full"
+        src="@/assets/slideshow/how-to-make-money-with-ethereum-in-nigeria.jpeg"
+      /> -->
+      <div class="absolute top-0 w-full h-full flex flex-wrap justify-center items-center">
+        <div class="w-full md:w-1/2 px-10">
+          <div class="max-w-3xl">
+            <h1 class="text-3xl text-gray-900 font-bold uppercase sm:text-5xl">
+              RELIABLE ACCESS TO INVESTING ANYTIME
+            </h1>
+            <p class="text-gray-700 mt-4 uppercase">
+              Investing with ETH INV. is made easy, less stressing and everything you need in one packaged platform
+            </p>
+            <router-link
+              to="/register"
+              class="inline-block px-6 py-3 bg-green-500 rounded-lg shadow mt-6 text-black font-semibold text-sm text-gray-900 hover:bg-green-400"
+            >
+              Get Started
+            </router-link>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 px-10">  
+          <img
+            class="h-full w-full"
+            src="@/assets/undraw_crypto_portfolio_2jy5.svg"
+          />
+        </div>
+      </div>
+    </div>
+
+      <!-- <agile :initial-slide="0" :autoplay="true" :autoplay-speed="4000">
         <div class="slide relative min-h-screen">
           <img
             class="object-cover h-full w-full"
@@ -43,7 +68,6 @@
               <h1 class="text-3xl text-white font-bold uppercase sm:text-5xl">
                 OUR PROFESSIONAL TEAM ENSURE'S A SAFE AND SECURE INVESTMENT
               </h1>
-              <!-- <p class="text-gray-400 mt-4 uppercase"></p> -->
               <router-link
                 to="/register"
                 class="inline-block px-6 py-3 bg-green-500 rounded-lg shadow mt-6 text-black font-semibold text-sm text-gray-900"
@@ -119,13 +143,7 @@
             </div>
           </div>
         </div>
-        <template slot="prevButton"
-          ><i class="fas fa-chevron-left"></i
-        ></template>
-        <template slot="nextButton"
-          ><i class="fas fa-chevron-right"></i
-        ></template>
-      </agile>
+      </agile> -->
     </section>
     <section id="about" class="relative min-h-screen flex flex-col justify-center items-center py-24 px-6 sm:px-10 md:px-20 lg:px-40">
       <h3 class="text-2xl text-center font-bold">About Us</h3>
@@ -356,10 +374,9 @@
     </div>
     </section>
     <section id="projections" class="py-24 px-6 sm:px-10 md:px-20 lg:px-40">
-      <h3 class="text-2xl text-center font-bold">Plans &amp; Forecasts</h3>
+      <h3 class="text-2xl text-center font-bold">Plans</h3>
       <p class="text-gray-600 mt-6 leading-loose max-w-xl">
-        Decide the investment plan of your choice and utilize our calculator to
-        make future forecast
+        Select from our range of plans that best suit your investment budget
       </p>
       <div class="flex flex-wrap mt-10 justify-center">
         <div
@@ -386,25 +403,16 @@
             <div class="text-gray-600 tracking-wide text-center text-sm pb-2">
               after {{ formatDays(plan.duration) }}
             </div>
-            <button
-              v-if="projection.plan === plan.id"
-              class="block w-full py-2 text-white rounded-b-lg bg-green-500 text-center text-sm"
-              disabled
+            <router-link to="/register"
+              class="block w-full py-2 text-white rounded-b-lg bg-green-500 text-center text-sm hover:bg-green-400"
             >
-              Selected
-            </button>
-            <button
-              v-else
-              @click="projection.plan = plan.id"
-              class="block w-full py-2 bg-gray-700 text-white rounded-b-lg hover:bg-green-500 text-center text-sm"
-            >
-              Choose
-            </button>
+              Get started
+            </router-link>
           </div>
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-1/2 px-2 my-2">
+        <!-- <div class="w-full md:w-1/2 px-2 my-2">
           <div
             class="bg-gray-800 pt-5 pb-6 px-3 rounded-lg mt-5 flex flex-wrap"
           >
@@ -443,8 +451,8 @@
               />
             </div>
           </div>
-        </div>
-        <div class="w-full md:w-1/2 px-2 my-2">
+        </div> -->
+        <!-- <div class="w-full md:w-1/2 px-2 my-2">
           <div
             class="bg-green-700 pt-5 pb-6 px-3 rounded-lg mt-5 flex flex-wrap"
           >
@@ -479,7 +487,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
   </div>
@@ -490,14 +498,10 @@ import axios from "axios";
 import mixins from "../mixins";
 import BigNumber from "bignumber.js";
 import izitoast from "izitoast";
-import { VueAgile } from "vue-agile";
 
 export default {
   name: "Home",
   mixins: [mixins],
-  components: {
-    agile: VueAgile,
-  },
   data() {
     return {
       BigNumber,
