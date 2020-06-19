@@ -10,12 +10,12 @@
         src="@/assets/slideshow/how-to-make-money-with-ethereum-in-nigeria.jpeg"
       /> -->
       <div class="absolute top-0 w-full h-full flex flex-wrap justify-center items-center">
-        <div class="w-full md:w-1/2 px-10">
-          <div class="max-w-3xl">
-            <h1 class="text-3xl text-gray-900 font-bold uppercase sm:text-5xl">
-              RELIABLE ACCESS TO INVESTING ANYTIME
+        <div class="w-full md:w-1/2 pl-10 sm:pl-40 pr-10">
+          <div class="max-w-2xl">
+            <h1 class="text-3xl text-gray-900 leading-tight font-bold sm:text-5xl">
+              Reliable Access To Investing Anytime
             </h1>
-            <p class="text-gray-700 mt-4 uppercase">
+            <p class="text-gray-700 mt-4">
               Investing with ETH INV. is made easy, less stressing and everything you need in one packaged platform
             </p>
             <router-link
