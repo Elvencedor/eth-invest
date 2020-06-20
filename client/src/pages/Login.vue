@@ -4,9 +4,9 @@
     <div class="w-full max-w-lg">
       <form @submit.prevent="loginRequest()" class="bg-white shadow-lg p-6 rounded-lg mt-10">
         <div>
-          <label for="login" class="text-gray-900">Login</label>
-          <input type="text" v-model="$v.form.login.$model" class="mt-3 w-full rounded-lg py-3 px-6 border-2 border-gray-200 text-gray-600" id="login" placeholder="E-mail or username">
-          <p class="text-xs text-red-500 italic" v-if="$v.form.login.$error && !$v.form.login.required">Login is required</p>
+          <label for="login" class="text-gray-900">E-mail/Username</label>
+          <input type="text" v-model="$v.form.login.$model" class="mt-3 w-full rounded-lg py-3 px-6 border-2 border-gray-200 text-gray-600" id="login" placeholder="e.g johndoe@domain.com">
+          <p class="text-xs text-red-500 italic" v-if="$v.form.login.$error && !$v.form.login.required">E-mail/Username is required</p>
         </div>
         <div class="mt-6">
           <div class="flex justify-between items-center">
@@ -28,7 +28,7 @@
             :disabled="loading"
           >
           <span v-if="loading" class="fas fa-spinner fa-spin"> </span>
-            Login
+            Login to your account
           </button>
         </div>
       </form>
