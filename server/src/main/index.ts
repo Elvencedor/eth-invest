@@ -7,6 +7,7 @@ import 'reflect-metadata'
 import { Express } from 'express'
 import { createConnection } from 'typeorm'
 import { updateInvestments } from './lib/services/investment'
+import { convertNgnToAsset } from "./lib/services/deposit";
 const config = require('config')
 const { http }: {http: Express} = require('./lib/server')
 const port:number = config.get('server.port')

@@ -300,5 +300,5 @@ export function convertNgnToAsset (amount:string): string {
   // get equivalent value of user deposit in USD
   const equivalentValue = oneNgnToUsdPrice * Number(amount)
 
-  return (equivalentValue / oneEthToUsdPrice).toString(10)
+  return new BigNumber(equivalentValue / oneEthToUsdPrice).toFormat(4)
 }
