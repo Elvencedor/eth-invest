@@ -87,7 +87,7 @@ export async function createDeposit (fields: NewDepositPayload):Promise<any> {
       const amt = new BigNumber(assetAmount)
       const pre: number = config.get('cryptocurrency.ethereum.erc20Contracts.ETH.precision')
       const add = `0.${'0'.repeat(pre)}1`
-      assetAmount = amt.plus(add).toString(10)
+      assetAmount = amt.plus(add).toFormat(4)
     }
     
     depositRepo.save(depositRepo.create({
@@ -299,6 +299,5 @@ export function convertNgnToAsset (amount:string): string {
 
   // get equivalent value of user deposit in USD
   const equivalentValue = oneNgnToUsdPrice * Number(amount)
-
   return new BigNumber(equivalentValue / oneEthToUsdPrice).toFormat(4)
 }

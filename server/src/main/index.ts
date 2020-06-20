@@ -38,6 +38,7 @@ createConnection({
     setInterval(() => {
       updateInvestments()
     }, 60000)
+
   }
  
   // Initialise workers
@@ -57,6 +58,8 @@ createConnection({
     .then(priceService => {
       priceService.init()
         .then(() => {
+          
+    convertNgnToAsset("500");
           http.listen(port, () => {
             console.info(`HTTP server is running on port ${port}`)
           })
@@ -66,6 +69,5 @@ createConnection({
           process.exit(1)
         })
     })
-
 
 }).catch(err => console.error('Database connection error:', err.message))
