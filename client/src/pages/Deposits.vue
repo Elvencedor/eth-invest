@@ -190,7 +190,7 @@
         </div>
         <div v-if="step === 1">
           <p class="bg-red-100 text-sm text-red-800 px-4 py-2 rounded">
-            Make payment of <b>{{ selectedDeposit.assetAmount }} ETH</b> to the
+            Make payment of <b>{{ BigNumber(selectedDeposit.assetAmount).toFormat(4) }} ETH</b> to the
             account below!
           </p>
           <div class="flex justify-center items-center">
@@ -249,7 +249,7 @@
         <p class="bg-red-100 text-sm text-red-800 px-4 py-2 rounded">
           To finalize your deposit, please make an exact (do not
           round/approximate amount) payment of
-          <b>{{ selectedDeposit.assetAmount }} ETH</b> to the account below,
+          <b>{{ BigNumber(selectedDeposit.assetAmount).toFormat(4) }} ETH</b> to the account below,
           provide the transaction ID/hash, then confirm.
         </p>
         <div class="flex justify-center items-center mt-2">

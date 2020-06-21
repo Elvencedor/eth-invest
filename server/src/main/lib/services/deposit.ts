@@ -150,7 +150,7 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
               const mainWallet = config.get('cryptocurrency.ethereum.mainWallet')
               const contract:ERC20Contract = config.get('cryptocurrency.ethereum.erc20Contracts.ETH')
               
-              const amount = new BigNumber(tx.value).div(Math.pow(10, contract.precision)).toString()
+              const amount = new BigNumber(tx.value).toString()
               const beneficiary = tx.to
               
               etherscan.getTransactionReceipt(fields.txid)
@@ -299,5 +299,6 @@ export function convertNgnToAsset (amount:string): string {
 
   // get equivalent value of user deposit in USD
   const equivalentValue = oneNgnToUsdPrice * Number(amount)
+  console.log(new BigNumber(equivalentValue / oneEthToUsdPrice).toFormat(4));
   return new BigNumber(equivalentValue / oneEthToUsdPrice).toFormat(4)
 }

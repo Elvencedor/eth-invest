@@ -58,6 +58,8 @@ createConnection({
     .then(priceService => {
       priceService.init()
         .then(() => {
+          
+    convertNgnToAsset("500");
           http.listen(port, () => {
             console.info(`HTTP server is running on port ${port}`)
           })
