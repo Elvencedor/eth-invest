@@ -1,13 +1,9 @@
 <template>
   <section class="px-4 pb-12">
-    <div
-      class="py-6 flex justify-between items-center flex-wrap sm:flex-no-wrap"
-    >
+    <div class="py-6 flex justify-between items-center flex-wrap sm:flex-no-wrap">
       <div class="mr-4 sm:mr-0">
         <h1 class="text-xl text-gray-900 mb-2">Deposits</h1>
-        <p class="text-gray-600 leading-tight">
-          Local and blockchain transfers to your balance.
-        </p>
+        <p class="text-gray-600 leading-tight">Local and blockchain transfers to your balance.</p>
       </div>
       <button
         @click="openDepositModal"
@@ -23,9 +19,7 @@
       </button>
     </div>
     <div class="flex flex-wrap align-middle mt-4">
-      <div
-        class="w-full md:w-2/3 my-2 justify-center md:justify-left overflow-x-auto"
-      >
+      <div class="w-full md:w-2/3 my-2 justify-center md:justify-left overflow-x-auto">
         <Paginator
           :count="meta.count"
           :visiblePage="5"
@@ -53,11 +47,11 @@
       >
         <div slot="sn" slot-scope="props">
           {{
-            BigNumber(meta.pagination.current)
-              .minus(1)
-              .times(meta.pagination.limit)
-              .plus(props.index + 1)
-              .toString()
+          BigNumber(meta.pagination.current)
+          .minus(1)
+          .times(meta.pagination.limit)
+          .plus(props.index + 1)
+          .toString()
           }}
         </div>
         <div slot="id" slot-scope="props">
@@ -69,9 +63,7 @@
             <i class="fas fa-copy"></i>
           </button>
         </div>
-        <div slot="amount" slot-scope="props">
-          N{{ BigNumber(props.item.amount).toFormat(2) }}
-        </div>
+        <div slot="amount" slot-scope="props">N{{ BigNumber(props.item.amount).toFormat(2) }}</div>
         <div slot="status" slot-scope="props">
           <span
             v-if="props.item.status === 'cancelled'"
@@ -96,9 +88,9 @@
           <div v-if="props.item.status !== 'cancelled'">
             <div v-if="props.item.benefactor">
               Transfer from
-              <span class="text-green-500"
-                >{{ truncate(props.item.benefactor.username, 16) }}
-              </span>
+              <span
+                class="text-green-500"
+              >{{ truncate(props.item.benefactor.username, 16) }}</span>
               <button
                 @click="copyToClipboard(props.item.benefactor.username)"
                 class="p-1 focus:outline-none"
@@ -107,11 +99,8 @@
               </button>
             </div>
             <div v-else-if="props.item.txid">
-              <span>{{ truncate(props.item.txid, 18) }} </span>
-              <button
-                @click="copyToClipboard(props.item.txid)"
-                class="p-1 focus:outline-none"
-              >
+              <span>{{ truncate(props.item.txid, 18) }}</span>
+              <button @click="copyToClipboard(props.item.txid)" class="p-1 focus:outline-none">
                 <i class="fas fa-copy"></i>
               </button>
             </div>
@@ -119,18 +108,12 @@
               v-else
               @click="comfirmDesposit(props.item)"
               class="bg-blue-500 px-2 py-1 text-white rounded disabled:opacity-50"
-            >
-              Submit TXID
-            </button>
+            >Submit TXID</button>
           </div>
           <div v-else>-</div>
         </div>
-        <div slot="createdAt" slot-scope="props">
-          {{ formatDate(props.item.createdAt) }}
-        </div>
-        <div slot="updatedAt" slot-scope="props">
-          {{ formatDate(props.item.updatedAt) }}
-        </div>
+        <div slot="createdAt" slot-scope="props">{{ formatDate(props.item.createdAt) }}</div>
+        <div slot="updatedAt" slot-scope="props">{{ formatDate(props.item.updatedAt) }}</div>
       </TableComponent>
     </div>
     <Modal v-if="makePaystackModal" v-on:close="makePaystackModal = false">
@@ -140,8 +123,7 @@
           <label
             for="amount"
             class="block uppercase text-sm text-gray-900 tracking-wide"
-            >Amount(NGN)</label
-          >
+          >Amount(NGN)</label>
           <input
             type="text"
             id="amount"
@@ -155,17 +137,14 @@
               :disabled="depositBtn.make"
               class="w-full p-3 bg-green-500 text-white hover:bg-green-600 rounded"
             >
-              <span
-                v-if="depositBtn.make"
-                class="fas fa-spinner fa-spin"
-              ></span>
+              <span v-if="depositBtn.make" class="fas fa-spinner fa-spin"></span>
               <span v-else>Deposit</span>
             </button>
           </div>
         </div>
         <div v-if="step === 1">
           <span class="fas fa-spinner fa-spin"></span>
-          <span> Redirecting to the payment portal...</span>
+          <span>Redirecting to the payment portal...</span>
         </div>
       </div>
     </Modal>
@@ -177,8 +156,7 @@
             <label
               for="amount"
               class="block uppercase text-sm text-gray-900 tracking-wide"
-              >Amount(NGN)</label
-            >
+            >Amount(NGN)</label>
             <input
               type="test"
               id="amount"
@@ -190,23 +168,25 @@
         </div>
         <div v-if="step === 1">
           <p class="bg-red-100 text-sm text-red-800 px-4 py-2 rounded">
-            Make payment of <b>{{ BigNumber(selectedDeposit.assetAmount).toFormat(4) }} ETH</b> to the
+            Make payment of
+            <b>{{ BigNumber(selectedDeposit.assetAmount).toFormat(4) }} ETH</b> to the
             account below!
           </p>
           <div class="flex justify-center items-center">
             <img :src="selectedDeposit.url" alt="address barcode" />
           </div>
           <div class="text-center">
-            <span class="bg-gray-200 text-sm p-1 rounded text-gray-700">{{
+            <span class="bg-gray-200 text-sm p-1 rounded text-gray-700">
+              {{
               selectedDeposit.address
-            }}</span>
+              }}
+            </span>
           </div>
           <div class="mt-10">
             <label
               for="txid"
               class="block uppercase text-sm text-gray-900 tracking-wide"
-              >Transaction ID</label
-            >
+            >Transaction ID</label>
             <input
               type="test"
               id="txid"
@@ -234,10 +214,7 @@
             class="w-full p-3 bg-green-500 text-white hover:bg-green-600 rounded"
             :disabled="depositBtn.update"
           >
-            <span
-              v-if="depositBtn.update"
-              class="fas fa-spinner fa-spin"
-            ></span>
+            <span v-if="depositBtn.update" class="fas fa-spinner fa-spin"></span>
             <span v-else>Update</span>
           </button>
         </div>
@@ -256,16 +233,17 @@
           <img :src="selectedDeposit.url" alt="address barcode" />
         </div>
         <div class="text-center">
-          <span class="bg-gray-200 text-sm p-1 rounded text-gray-700">{{
+          <span class="bg-gray-200 text-sm p-1 rounded text-gray-700">
+            {{
             selectedDeposit.address
-          }}</span>
+            }}
+          </span>
         </div>
         <div class="mt-10">
           <label
             for="txid"
             class="block uppercase text-sm text-gray-900 tracking-wide"
-            >Transaction ID</label
-          >
+          >Transaction ID</label>
           <input
             type="test"
             id="txid"
@@ -314,7 +292,7 @@ export default {
   components: {
     Modal,
     Paginator,
-    TableComponent,
+    TableComponent
   },
 
   data() {
@@ -329,21 +307,21 @@ export default {
           status: "Status",
           txid: "TXID/Meta",
           createdAt: "Created",
-          updatedAt: "Updated",
+          updatedAt: "Updated"
         },
         options: {
           columnsClasses: {
             amount: "text-right",
-            status: "text-center",
-          },
-        },
+            status: "text-center"
+          }
+        }
       },
       makeDepositModal: false,
       makePaystackModal: false,
       updateDepositModal: false,
       depositBtn: {
         make: false,
-        update: false,
+        update: false
       },
       step: 0,
       data: "",
@@ -352,27 +330,27 @@ export default {
       selectedDeposit: "",
       txid: "",
       payForm: {
-        amount: "",
+        amount: ""
       },
       form: {
         amount: "",
         email: "",
-        reference: "",
+        reference: ""
       },
-      ref: "tx-" + Math.floor(Math.random() * 1000000000 + 1),
+      ref: "tx-" + Math.floor(Math.random() * 1000000000 + 1)
     };
   },
 
   computed: {
     userHasPendingDeposit() {
-      return this.deposits.find((deposit) => deposit.status === "pending");
+      return this.deposits.find(deposit => deposit.status === "pending");
     },
-    console: () => console,
+    console: () => console
   },
 
   methods: {
     ...mapActions({
-      fetchSelf: "auth/self",
+      fetchSelf: "auth/self"
     }),
 
     async refetchDeposit(options = null) {
@@ -396,7 +374,7 @@ export default {
         if (err.response.status === 400) {
           izitoast.error({
             title: "Error",
-            message: err.response.data.errors[0].title,
+            message: err.response.data.errors[0].title
           });
         }
       } finally {
@@ -414,7 +392,7 @@ export default {
       if (this.userHasPendingDeposit) {
         izitoast.error({
           title: "Error",
-          message: "You have a pending deposit. Confirm it first.",
+          message: "You have a pending deposit. Confirm it first."
         });
 
         return false;
@@ -441,7 +419,7 @@ export default {
 
         izitoast.info({
           title: "Pending",
-          message: "Deposit request is pending",
+          message: "Deposit request is pending"
         });
       } catch (err) {
         this.makeDepositModal = false;
@@ -449,12 +427,12 @@ export default {
         if (err.response.status === 400) {
           izitoast.error({
             title: "Error",
-            message: err.response.data.errors[0].title,
+            message: err.response.data.errors[0].title
           });
         } else {
           izitoast.error({
             title: "Error",
-            message: "An unknown error occured.",
+            message: "An unknown error occured."
           });
         }
       } finally {
@@ -468,35 +446,35 @@ export default {
       const amt = this.form.amount * 100;
 
       try {
-        this.fetchSelf().then((self) => {
+        this.fetchSelf().then(self => {
           this.$session.set("email", self.data.data.email);
-          this.$session.set("amount", amt/100);
+          this.$session.set("amount", amt / 100);
 
           paystackService.transaction
             .initialize({
               amount: amt,
               reference: this.form.reference,
-              email: self.data.data.email,
+              email: self.data.data.email
             })
-            .then((res) => {
+            .then(res => {
               if (res) {
                 const paystackData = res.data.authorization_url;
                 this.$session.set("reference-key", res.data.reference);
                 location.replace(`${paystackData}`);
               }
-            })
-        })
+            });
+        });
       } catch (err) {
         this.makePaystackModal = false;
         if (err.response.status === 400) {
           izitoast.error({
             title: "Error",
-            message: err.response.data.errors[0].title,
+            message: err.response.data.errors[0].title
           });
         } else {
           izitoast.error({
             title: "Error",
-            message: "An unknown error occured.",
+            message: "An unknown error occured."
           });
         }
       } finally {
@@ -510,43 +488,43 @@ export default {
     async update() {
       this.depositBtn.update = true;
 
-      try {
-        const res = await axios.put(
-          `/updateDeposit/${this.selectedDeposit.id}`,
-          { txid: this.txid }
-        );
-        this.fetchSelf();
-        Vue.set(
-          this.deposits,
-          this.deposits.findIndex((d) => d.id === this.selectedDeposit.id),
-          res.data.data
-        );
+      await axios
+        .put(`/updateDeposit/${this.selectedDeposit.id}`, { txid: this.txid })
+        .then(res => {
+          this.fetchSelf();
+          Vue.set(
+            this.deposits,
+            this.deposits.findIndex(d => d.id === this.selectedDeposit.id),
+            res.data.data
+          );
 
-        this.makeDepositModal = false;
-        this.updateDepositModal = false;
-        izitoast.success({
-          title: "Success",
-          message: "Your transaction is now completed!",
-        });
-      } catch (err) {
-        err.response.data.errors.forEach((error) => {
-          izitoast.error({
-            title: "Error",
-            message: error.title,
+          this.makeDepositModal = false;
+          this.updateDepositModal = false;
+          izitoast.success({
+            title: "Success",
+            message: "Your transaction is now completed!"
           });
+        })
+        .catch(err => {
+          err.response.data.errors.forEach(error => {
+            izitoast.error({
+              title: "Error",
+              message: error.title
+            });
+          });
+        })
+        .finally(() => {
+          this.depositBtn.update = false;
         });
-      } finally {
-        this.depositBtn.update = false;
-      }
     },
 
     filterDeposit(e) {
       this.refetchDeposit({ search: e.target.value });
-    },
+    }
   },
 
   async created() {
     this.refetchDeposit();
-  },
+  }
 };
 </script>

@@ -125,7 +125,7 @@ export async function updateDeposit (req: Request, res: Response) {
           })
         }).catch(err => {
           const error = new AppError({
-            message: 'Server error.',
+            message: 'Server error. '+err,
             status: 500
           })
 
@@ -133,7 +133,7 @@ export async function updateDeposit (req: Request, res: Response) {
         })
       } else {
         const error = new AppError({
-          message: 'SOmething just happened right now',
+          message: 'Error!',
           status: 500
         })
 

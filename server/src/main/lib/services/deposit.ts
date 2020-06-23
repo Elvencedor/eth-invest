@@ -144,16 +144,16 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
           }))
         }
 
-        etherscan.getTransactionByHash(fields.txid)
-          .then(tx => {
+        await etherscan.getTransactionByHash(fields.txid)
+          .then(async tx => {
             if (tx) {
               const mainWallet = config.get('cryptocurrency.ethereum.mainWallet')
               const contract:ERC20Contract = config.get('cryptocurrency.ethereum.erc20Contracts.ETH')
               
-              const amount = new BigNumber(tx.value).toString()
+              const amount = new BigNumber(tx.value).div(Math.pow(10, contract.precision)).toFormat(4)
               const beneficiary = tx.to
-              
-              etherscan.getTransactionReceipt(fields.txid)
+
+              await etherscan.getTransactionReceipt(fields.txid)
               .then(async txReceipt => {
                 if (txReceipt) {
                   if(new BigNumber(txReceipt.blockNumber).isLessThan(config.get('cryptocurrency.ethereum.blockLowerBound'))) {
@@ -168,91 +168,110 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
                       message: 'Failed transaction!',
                       status: 423
                     }))
-                  }
-
-                  if(
+                  } if (
                     String(beneficiary).toUpperCase() !==
                     String(mainWallet).toUpperCase()
                   ) {
-                    return reject(new AppError({
-                      message: 'Invalid transaction beneficiary!',
-                      status: 423
-                    }))
+                    return reject(
+                      new AppError({
+                        message: "Invalid transaction beneficiary!",
+                        status: 423,
+                      })
+                    );
+                  }
+                  if (amount !== deposit.assetAmount) {
+                    return reject(
+                      new AppError({
+                        message:
+                          "Transacted amount and deposit amount do not match!",
+                        status: 423,
+                      })
+                    );
                   }
 
-                
-                  if(amount != deposit.assetAmount) {
-                    return reject(new AppError({
-                      message: 'Transacted amount and deposit amount do not match!',
-                      status: 423
-                    }))
-                  }
+                    await getConnection().transaction(
+                      "SERIALIZABLE",
+                      async (txEntityManager) => {
+                        const user = await txEntityManager.findOne(
+                          User,
+                          deposit.userId
+                        );
 
-                  getConnection().transaction('SERIALIZABLE', async txEntityManager => {
-                    const user = await txEntityManager.findOne(
-                      User,
-                      deposit.userId
-                    )
+                        if (user) {
+                          const userBalance = new BigNumber(user!.balance)
+                            .plus(deposit.amount)
+                            .toString();
 
-                    if(user){
-                      const userBalance = new BigNumber(user!.balance)
-                      .plus(deposit.amount)
-                      .toString()
-                    
-                      try {
-                        await txEntityManager.update(Deposit, deposit.id, {
-                          txid: fields.txid,
-                          status: DepositStatus.COMPLETED
-                        })
-                      } catch (error) {
-                        if (error.code === 'ER_DUP_ENTRY') {
-                          return reject(new AppError({
-                            message: 'Unacceptable transaction!',
-                            status: 403
-                          }))
+                          try {
+                            await txEntityManager.update(Deposit, deposit.id, {
+                              txid: fields.txid,
+                              status: DepositStatus.COMPLETED,
+                            });
+                          } catch (error) {
+                            if (error.code === '23505') {
+                              return reject(
+                                new AppError({
+                                  message: "Unacceptable transaction! - Transaction id has already been claimed.",
+                                  status: 403,
+                                })
+                              );
+                            }
+
+                            return reject(
+                              new AppError({
+                                message: "An unexpected error occured! ",
+                                status: 500,
+                              })
+                            );
+                          }
+
+                          await txEntityManager.update(User, user!.id, {
+                            balance: userBalance,
+                          });
+                        } else {
+                          return reject(
+                            new AppError({
+                              message: "user does not exist",
+                              status: 403,
+                            })
+                          );
                         }
 
-                        return reject(new AppError({
-                          message: 'An unknown error occured!',
-                          status: 500
-                        }))
+                        const referral = await txEntityManager.findOne(
+                          Referral,
+                          {
+                            relations: ["referrer"],
+                            where: { userId: user!.id },
+                          }
+                        );
+
+                        if (referral) {
+                          const referrer = referral!.referrer;
+                          const referrerBonusPercentage: number = config.get(
+                            "misc.refPercentage"
+                          );
+                          const referrerBonus = new BigNumber(deposit.amount)
+                            .times(referrerBonusPercentage)
+                            .div(100);
+
+                          referrer.bonusBalance = referrerBonus
+                            .plus(referrer.bonusBalance)
+                            .toString();
+                          referral.bonus = referrerBonus
+                            .plus(referral.bonus)
+                            .toString();
+
+                          await txEntityManager.save(referrer);
+                          await txEntityManager.save(referral);
+                        }
+
+                        deposit.txid = fields.txid;
+                        deposit.status = DepositStatus.COMPLETED;
+
+                        resolve(deposit);
                       }
-                      await txEntityManager.update(User, user!.id, {
-                        balance: userBalance
-                      })
-                    }else {
-                      return reject(new AppError({
-                        message: 'user does not exist',
-                        status: 403
-                      }))
-                    }
+                    );
 
-                    const referral = await txEntityManager.findOne(
-                      Referral,
-                      {
-                        relations: ['referrer'],
-                        where: { userId: user!.id }
-                      }
-                    )
-
-                    if (referral) {
-                      const referrer = referral!.referrer
-                      const referrerBonusPercentage:number = config.get('misc.refPercentage')
-                      const referrerBonus = new BigNumber(deposit.amount).times(referrerBonusPercentage).div(100)
-
-                      referrer.bonusBalance = referrerBonus.plus(referrer.bonusBalance).toString()
-                      referral.bonus = referrerBonus.plus(referral.bonus).toString()
-
-                      await txEntityManager.save(referrer)
-                      await txEntityManager.save(referral)
-                    }
-
-                    deposit.txid = fields.txid
-                    deposit.status = DepositStatus.COMPLETED
-
-                    resolve(deposit)
-                  })
-                  resolve(deposit)
                 } else reject(new AppError({
                   message: 'Invalid transaction receipt!',
                   status: 423
@@ -261,7 +280,7 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
                 .catch(err => {
                   console.log(err)
                   reject(new AppError({
-                    message: 'An unexpected error occured! - 1',
+                    message: 'An unexpected error occured!',
                     status: 500
                   }))
                 })
@@ -273,7 +292,7 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
           .catch(err => {
             console.log(err)
             reject(new AppError({
-              message: 'An unexpected error occured! - 2',
+              message: 'An unexpected error occured!',
               status: 500
             }))
           })
@@ -286,7 +305,7 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
       .catch(err => {
         console.log(err)
         reject(new AppError({
-          message: 'An unexpected error occured! - 3',
+          message: 'An unexpected error occured!',
           status: 500
         }))
       })
