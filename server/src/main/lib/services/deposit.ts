@@ -163,12 +163,14 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
                     }))
                   }
 
-                  if(!(new BigNumber(txReceipt.status).isEqualTo(1))) {
+                  if(new BigNumber(txReceipt.status).toString() !== '1') {
                     return reject(new AppError({
                       message: 'Failed transaction!',
                       status: 423
                     }))
-                  } if (
+                  }
+                  
+                  if (
                     String(beneficiary).toUpperCase() !==
                     String(mainWallet).toUpperCase()
                   ) {
@@ -179,6 +181,7 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
                       })
                     );
                   }
+
                   if (amount !== deposit.assetAmount) {
                     return reject(
                       new AppError({
@@ -202,6 +205,9 @@ export async function updateDeposit (id: string, fields: DepositUpdatePayload):P
                             .plus(deposit.amount)
                             .toString();
 
+                          console.log({
+                            status: new BigNumber(txReceipt.status).toString(),
+                          });
                           try {
                             await txEntityManager.update(Deposit, deposit.id, {
                               txid: fields.txid,
