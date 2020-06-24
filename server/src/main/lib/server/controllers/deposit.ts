@@ -110,7 +110,7 @@ export async function updateDeposit (req: Request, res: Response) {
     return respond(res, 400, [new AppError({ message: 'Transaction hash can not be empty!', status: 400 })])
   }
   
-  depositService.updateDeposit(req.params.id, {
+  await depositService.updateDeposit(req.params.id, {
     txid: req.body.txid
   })
     .then(deposit => {
